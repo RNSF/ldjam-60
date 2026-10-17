@@ -6,8 +6,6 @@
 [ext_resource type="Script" uid="uid://cae812q2ispri" path="res://scenes/clear_button.gd" id="4_mmv6w"]
 [ext_resource type="Script" uid="uid://b5eqk2q80bqab" path="res://scenes/similarity_manager.gd" id="5_bql3h"]
 
-[sub_resource type="PixelMatchSettings" id="PixelMatchSettings_bql3h"]
-
 [node name="DbgDraw" type="Node2D" unique_id=33689474]
 position = Vector2(256, 360)
 
@@ -66,10 +64,9 @@ draw_canvas = NodePath("../DrawImageRect")
 [node name="SimilarityManager" type="Node" parent="DebugOverlayUI" unique_id=402587851 node_paths=PackedStringArray("draw_canvas", "diff_sprite", "similarity_text")]
 script = ExtResource("5_bql3h")
 draw_canvas = NodePath("../DrawImageRect")
-intended_enemy_type = "archer"
+enemy_types = Array[int]([0, 1, 2])
 diff_sprite = NodePath("../DiffImageRect")
 similarity_text = NodePath("../SimilarityLabel")
-pixel_matcher_settings = SubResource("PixelMatchSettings_bql3h")
 
 [node name="DiffImageRect" type="TextureRect" parent="DebugOverlayUI" unique_id=1139564230]
 custom_minimum_size = Vector2(512, 512)

@@ -8,9 +8,15 @@ var brush_color := Color.BLACK
 var _last_pos := Vector2i(-1, -1)
 @export var canvas_size := 512
 
+@export var outline_color := Color.RED
+@export var outline_width := 2.0
+
+func _draw() -> void: 
+	draw_rect(Rect2(Vector2.ZERO, size), outline_color, false, outline_width)
+
 func _ready() -> void:
 	image = Image.create(canvas_size, canvas_size, false, Image.FORMAT_RGBA8)
-	image.fill(Color.WHITE)
+	image.fill(Color(0, 0, 0, 0))
 	texture = ImageTexture.create_from_image(image)
 
 func _gui_input(event: InputEvent) -> void:
@@ -43,5 +49,5 @@ func _stamp(center: Vector2i) -> void:
 				image.set_pixelv(p, brush_color)
 
 func clear() -> void:
-	image.fill(Color.WHITE)
+	image.fill(Color(0, 0, 0, 0))
 	texture.update(image)
