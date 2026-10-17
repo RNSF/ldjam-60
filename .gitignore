@@ -1,3 +1,7 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+# ignore tmp files
+*.tmp
+# ignore files created by vim when editing
+*~

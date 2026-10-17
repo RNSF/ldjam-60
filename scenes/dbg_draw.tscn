@@ -32,10 +32,10 @@ text = "Original Image"
 horizontal_alignment = 1
 
 [node name="DrawAreaLabel" type="Label" parent="DebugOverlayUI" unique_id=704934333]
-offset_left = 1043.0
-offset_top = 356.0
-offset_right = 1156.0
-offset_bottom = 379.0
+offset_left = 869.0
+offset_top = 369.0
+offset_right = 982.0
+offset_bottom = 392.0
 text = "Draw Area"
 horizontal_alignment = 1
 
@@ -44,23 +44,40 @@ position = Vector2(368, 683)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_uetim")
 
-[node name="TextureRect" type="TextureRect" parent="DebugOverlayUI" unique_id=283286722]
+[node name="DrawImageRect" type="TextureRect" parent="DebugOverlayUI" unique_id=283286722]
 custom_minimum_size = Vector2(512, 512)
-offset_left = 864.0
-offset_top = 422.0
-offset_right = 1376.0
-offset_bottom = 934.0
+offset_left = 701.0
+offset_top = 418.0
+offset_right = 1213.0
+offset_bottom = 930.0
 script = ExtResource("3_gqdvu")
 
 [node name="ClearButton" type="Button" parent="DebugOverlayUI" unique_id=696738997 node_paths=PackedStringArray("draw_canvas")]
-offset_left = 1016.0
+offset_left = 844.0
 offset_top = 963.0
-offset_right = 1205.0
+offset_right = 1033.0
 offset_bottom = 1036.0
 text = "Clear"
 script = ExtResource("4_mmv6w")
-draw_canvas = NodePath("../TextureRect")
+draw_canvas = NodePath("../DrawImageRect")
 
-[node name="SimilarityManager" type="Node" parent="DebugOverlayUI" unique_id=402587851 node_paths=PackedStringArray("draw_canvas")]
+[node name="SimilarityManager" type="Node" parent="DebugOverlayUI" unique_id=402587851 node_paths=PackedStringArray("draw_canvas", "diff_sprite", "similarity_text")]
 script = ExtResource("5_bql3h")
-draw_canvas = NodePath("../TextureRect")
+draw_canvas = NodePath("../DrawImageRect")
+intended_enemy_type = "archer"
+diff_sprite = NodePath("../DiffImageRect")
+similarity_text = NodePath("../SimilarityLabel")
+
+[node name="DiffImageRect" type="TextureRect" parent="DebugOverlayUI" unique_id=1139564230]
+custom_minimum_size = Vector2(512, 512)
+offset_left = 1274.0
+offset_top = 423.0
+offset_right = 1786.0
+offset_bottom = 935.0
+
+[node name="DiffImageLabel" type="Label" parent="DebugOverlayUI" unique_id=1135347527]
+offset_left = 1494.0
+offset_top = 362.0
+offset_right = 1574.0
+offset_bottom = 385.0
+text = "Diff Image"

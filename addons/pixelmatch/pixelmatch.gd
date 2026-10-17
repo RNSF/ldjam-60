@@ -3,6 +3,8 @@
 
 extends RefCounted
 
+class_name PixelMatcher
+
 var threshold := 0.1  # matching threshold (0 to 1); smaller is more sensitive
 var include_aa := false  # whether to skip anti-aliasing detection
 var alpha := 0.1  # opacity of original image in diff output

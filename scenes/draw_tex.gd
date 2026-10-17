@@ -6,9 +6,10 @@ var image: Image
 var brush_radius := 4
 var brush_color := Color.BLACK
 var _last_pos := Vector2i(-1, -1)
+@export var canvas_size := 512
 
 func _ready() -> void:
-	image = Image.create(512, 512, false, Image.FORMAT_RGBA8)
+	image = Image.create(canvas_size, canvas_size, false, Image.FORMAT_RGBA8)
 	image.fill(Color.WHITE)
 	texture = ImageTexture.create_from_image(image)
 
