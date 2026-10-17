@@ -26,7 +26,7 @@ func _gui_input(event: InputEvent) -> void:
 		_last_pos = pos
 		texture.update(image)
 
-# Fill the gaps between mouse events so fast strokes stay continuous.
+# Fill the gaps between mouse events
 func _stroke(from: Vector2i, to: Vector2i) -> void:
 	var steps := maxi(maxi(absi(to.x - from.x), absi(to.y - from.y)), 1)
 	for i in steps + 1:
@@ -44,6 +44,3 @@ func _stamp(center: Vector2i) -> void:
 func clear() -> void:
 	image.fill(Color.WHITE)
 	texture.update(image)
-
-func save(path := "user://drawing.png") -> void:
-	image.save_png(path)
