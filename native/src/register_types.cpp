@@ -5,7 +5,8 @@
 #include <godot_cpp/core/defs.hpp>
 #include <godot_cpp/godot.hpp>
 
-#include "example_class.h"
+#include "pixelmatcher.h"
+#include "pixel_match_settings.h"
 
 using namespace godot;
 
@@ -14,7 +15,8 @@ void initialize_gdextension_types(ModuleInitializationLevel p_level)
 	if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE) {
 		return;
 	}
-	GDREGISTER_CLASS(ExampleClass);
+	GDREGISTER_CLASS(PixelMatcher);
+	GDREGISTER_CLASS(PixelMatchSettings);
 }
 
 void uninitialize_gdextension_types(ModuleInitializationLevel p_level) {
