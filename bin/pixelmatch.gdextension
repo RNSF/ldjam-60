@@ -4,9 +4,9 @@ compatibility_minimum = "4.5"
 reloadable = true
 
 [libraries]
-windows.debug.x86_64 = "res://bin/libpixelmatch.windows.template_debug.x86_64.dll"
-windows.release.x86_64 = "res://bin/libpixelmatch.windows.template_release.x86_64.dll"
-linux.debug.x86_64 = "res://bin/libpixelmatch.linux.template_debug.x86_64.so"
-linux.release.x86_64 = "res://bin/libpixelmatch.linux.template_release.x86_64.so"
-macos.debug = "res://bin/libpixelmatch.macos.template_debug.universal.dylib"
-macos.release = "res://bin/libpixelmatch.macos.template_release.universal.dylib"
+windows.debug.x86_64 = "res://bin/windows/pixelmatch.windows.template_debug.x86_64.dll"
+windows.release.x86_64 = "res://bin/windows/pixelmatch.windows.template_release.x86_64.dll"
+linux.debug.x86_64 = "res://bin/linux/libpixelmatch.linux.template_debug.x86_64.so"
+linux.release.x86_64 = "res://bin/linux/libpixelmatch.linux.template_release.x86_64.so"
+macos.debug = "res://bin/macos/libpixelmatch.macos.template_debug.dylib"
+macos.release = "res://bin/macos/libpixelmatch.macos.template_release.dylib"

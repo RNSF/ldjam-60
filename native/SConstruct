@@ -5,8 +5,8 @@ import sys
 from methods import print_error
 
 
-libname = "EXTENSION-NAME"
-projectdir = "project"
+libname = "pixelmatch"
+projectdir = ".."
 
 localEnv = Environment(tools=["default"], PLATFORM="")
 
