@@ -1,16 +1,22 @@
 [gd_scene format=3 uid="uid://ckcjugahbyib1"]
 
 [ext_resource type="Script" uid="uid://7ypl2ghsvd3c" path="res://scenes/spawn_area.gd" id="1_au4v6"]
-[ext_resource type="PackedScene" uid="uid://d2w8jclsb2sav" path="res://scenes/unit.tscn" id="2_uwyti"]
+[ext_resource type="PackedScene" uid="uid://xemb622ov8mi" path="res://scenes/spear_unit.tscn" id="2_6wqvc"]
+[ext_resource type="PackedScene" uid="uid://bonvpnde2dalv" path="res://scenes/archer_unit.tscn" id="3_4et80"]
+[ext_resource type="PackedScene" uid="uid://b0liejnd6bgoo" path="res://scenes/beast_unit.tscn" id="4_wggst"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6w0u0"]
 resource_local_to_scene = true
-size = Vector2(100, 1080)
+size = Vector2(50, 50)
 
 [node name="SpawnArea" type="Area2D" unique_id=1688502913]
 script = ExtResource("1_au4v6")
 size = Vector2(50, 50)
-unit_scene = ExtResource("2_uwyti")
+unit_scenes = Dictionary[int, PackedScene]({
+0: ExtResource("2_6wqvc"),
+1: ExtResource("3_4et80"),
+2: ExtResource("4_wggst")
+})
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2145631213]
 shape = SubResource("RectangleShape2D_6w0u0")

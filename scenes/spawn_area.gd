@@ -10,27 +10,34 @@ extends Area2D
 			var shape: RectangleShape2D = $CollisionShape2D.shape
 			shape.size = size
 
-@export var unit_scene : PackedScene
+
+@export var unit_scenes : Dictionary[Unit.Type, PackedScene]
+
+@export var spawning_parent : Node2D
+
+
 
 func _ready() -> void:
+	assert(spawning_parent)
 	size  = size
 
 
-func spawn_at(base_unit: Unit, spawn_position: Vector2, count: int) -> void:
+
+
+func get_spawn_locations(unit_size: Vector2, spawn_position: Vector2, count: int) -> Array[Vector2]:
+	if count < 1:
+		return []
 	
-	if (count < 1): return
-	
-	
-	
+	var spawn_locations: Array[Vector2] = []
 	var next_spawn_position = spawn_position
-	next_spawn_position.y = spawn_position.y - base_unit.size.y * (count - 1) / 2
+	next_spawn_position.y = spawn_position.y - unit_size.y * (count - 1) / 2
 	
 	for i in range(count):
-		var new_unit := base_unit.duplicate()
-		get_parent().add_child(new_unit)
-		new_unit.global_position = next_spawn_position
+		spawn_locations.append(next_spawn_position)
 		
-		next_spawn_position.x = spawn_position.x + base_unit.size.x * randf_range(-1, 1)
-		next_spawn_position.y += base_unit.size.y
+		next_spawn_position.x = spawn_position.x + unit_size.x * randf_range(-1, 1)
+		next_spawn_position.y += unit_size.y
+		
+	return spawn_locations
 	
 	

@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bgyby7cg71nic"]
+
+[ext_resource type="Shader" uid="uid://cpqyahtt644ew" path="res://scenes/vignette.gdshader" id="1_7sab7"]
+[ext_resource type="Script" uid="uid://bxcistj47v5m1" path="res://scenes/vignette.gd" id="2_ciie6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5awcn"]
+shader = ExtResource("1_7sab7")
+shader_parameter/color = Color(0.81960785, 0.39607844, 0, 1)
+shader_parameter/alpha = 0.44305688291788103
+shader_parameter/inner_radius = 0.0
+shader_parameter/outer_radius = 5.0
+
+[sub_resource type="Gradient" id="Gradient_u5sy4"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6w0u0"]
+gradient = SubResource("Gradient_u5sy4")
+
+[node name="Vignette" type="TextureRect" unique_id=299465870]
+material = SubResource("ShaderMaterial_5awcn")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("GradientTexture2D_6w0u0")
+script = ExtResource("2_ciie6")
+noise_speed = 2.0
+max_alpha = 0.6

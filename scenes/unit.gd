@@ -8,24 +8,30 @@ enum MoveState {
 }
 
 const WALK_FORCE = 10.0
+const ARENA_BOTTOM = 1080 / 2
+const ARENA_TOP = -1080 / 2
 
+@export var size: Vector2
+@export var attack_scene: PackedScene
+
+@export var target_x := 400.0
+@export var ally_unit_tag : StringName
+@export var enemy_unit_tag : StringName 
+
+
+var speed := 100.0
+var attack_period := 1.0
+var attack_radius_low := 400.0 # the distance the target unit needs to be 
+									 # within to enter the attacking state
+var attack_radius_high := 20000.0 # the distance the target unit needs to be
+									  # away to exit the attacking state
 var attack_strength := 1.0
-@export var health := 5.0 :
+var health := 5.0 :
 	set(new_value):
 		health = new_value
 		if health <= 0.0:
 			queue_free()
-@export var size: Vector2
-@export var attack_scene: PackedScene
-@export var speed := 100.0
-@export var target_x := 400.0
-@export var ally_unit_tag : StringName
-@export var enemy_unit_tag : StringName 
-var attack_period := 1.0
-@export var attack_radius_low := 400.0 # the distance the target unit needs to be 
-									 # within to enter the attacking state
-@export var attack_radius_high := 20000.0 # the distance the target unit needs to be
-									  # away to exit the attacking state
+
 @export var charge_radius := 0.0 # the distance a unit must be within for this unit to 
 								 # start charging at it
 
@@ -37,10 +43,15 @@ var attack_period := 1.0
 @onready var cohesion_zone := $CohesionZone
 @onready var separation_zone := $CohesionZone
 @onready var alignment_zone := $CohesionZone
-@onready var charge_zone := $CohesionZone
-@onready var attack_zone_max := $CohesionZone
-@onready var attack_zone_min := $CohesionZone
 
+@onready var sprite = $Sprites
+@onready var animation_player = $AnimationPlayer
+
+enum Type {
+	Spear,
+	Archer,
+	Beast
+}
 
 var hit_flash_percent = 0.0 :
 	set(new_value):
@@ -61,8 +72,16 @@ var move_state: MoveState = MoveState.WALK :
 		match move_state:
 			MoveState.FIGHT:
 				attack_timer.start(attack_period)
-				
-				
+		
+		is_running = move_state != MoveState.FIGHT
+
+var is_running := false :
+	set(new_value):
+		is_running = new_value
+		if is_running:
+			animation_player.play("walk")
+		else:
+			animation_player.stop()
 
 var target_unit: Unit = null
 var velocity : Vector2
@@ -70,28 +89,46 @@ var velocity : Vector2
 
 func _ready() -> void:
 	assert(attack_radius_low <= attack_radius_high)
-	if is_in_group(&"enemy"):
-		modulate = Color.RED
+	color = color.lightened(randf_range(0.0, 0.2))
 	pass # Replace with function body.
+
+
+# dummy function
+func init_stats(upper_body: float, lower_body: float) -> void:
+	assert(upper_body >= 0.0 and upper_body <= 1.0)
+	assert(lower_body >= 0.0 and lower_body <= 1.0)
+	return
+
+
+func init_texture(texture: Texture) -> void:
+	sprite.texture = texture
 
 
 func _find_new_target_unit():
 	var enemy_units := get_tree().get_nodes_in_group(enemy_unit_tag).filter(
 		func(x: Unit): return x.global_position.distance_to(global_position) < charge_radius)
 	
-	
+	enemy_units.sort_custom(func(a: Unit, b: Unit): 
+		return (a.global_position - global_position).length_squared() < (b.global_position - global_position).length_squared())
 	
 	if enemy_units.size():
-		target_unit = enemy_units.pick_random()
+		target_unit = enemy_units.front()
 
 
 func _process(delta: float) -> void:
 	hit_flash_percent = lerp(hit_flash_percent, 0.0, 20 * delta)
+	
+	if velocity.x > 0:
+		sprite.scale.x = 1
+	elif velocity.x < 0:
+		sprite.scale.x = -1
 
 func _physics_process(delta: float) -> void:
 	
 	var old_position := global_position
 	var target_walk_direction := Vector2.ZERO
+	
+	
 	
 	if !is_instance_valid(target_unit):
 		target_unit = null
@@ -152,6 +189,8 @@ func _physics_process(delta: float) -> void:
 		walk_vector += 20.0 * separation_vector
 		walk_vector += 1.0 * (average_neighbor_speed - velocity)
 		walk_vector += 100.0 * target_walk_direction
+		walk_vector += 100.0 * (clamp(remap(abs(position.y - ARENA_TOP), 0, 200, 1, 0), 0, 1) * Vector2.DOWN \
+			+ clamp(remap(abs(position.y - ARENA_BOTTOM), 0, 200, 1, 0), 0, 1) * Vector2.UP)
 		
 		velocity += walk_vector * WALK_FORCE * delta
 		velocity = velocity.normalized() * min(velocity.length(), speed)
@@ -159,6 +198,8 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2.ZERO
 	
 	position += velocity * delta
+	
+	position.y = clamp(position.y, ARENA_TOP, ARENA_BOTTOM)
 
 
 func _on_attack_timer_timeout() -> void:
@@ -174,6 +215,7 @@ func _on_attack_timer_timeout() -> void:
 		get_parent().add_child(attack)
 		attack.global_position = global_position
 		attack.attack(target_unit, attack_strength)
+		animation_player.play("attack")
 		
 		#if target_unit.move_state != MoveState.FIGHT:
 			#target_unit.target_unit = self

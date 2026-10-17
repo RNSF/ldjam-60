@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://d2w8jclsb2sav"]
 
 [ext_resource type="Script" uid="uid://dggjj30xs6f7k" path="res://scenes/unit.gd" id="1_k673f"]
-[ext_resource type="Texture2D" uid="uid://cl0w2b1rbgid4" path="res://icon.svg" id="1_o7ajc"]
 [ext_resource type="PackedScene" uid="uid://bkrh2hwdcqph8" path="res://scenes/arrow_attack.tscn" id="2_1jvru"]
+[ext_resource type="Texture2D" uid="uid://daqc7wh270bsy" path="res://sprites/archer.png" id="3_1jvru"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1jvru"]
 resource_local_to_scene = true
@@ -17,6 +17,111 @@ radius = 371.26407
 [sub_resource type="CircleShape2D" id="CircleShape2D_pgglx"]
 radius = 20.09975
 
+[sub_resource type="Animation" id="Animation_1jvru"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_tb304"]
+resource_name = "attack"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.1, 0.85), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gic7v"]
+resource_name = "walk"
+length = 0.5
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.10471975511965978, 0.10471975511965978, -0.10471975511965978]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-6, 0), Vector2(0, -10), Vector2(6, 0), Vector2(0, -10), Vector2(-6, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tb304"]
+_data = {
+&"RESET": SubResource("Animation_1jvru"),
+&"attack": SubResource("Animation_tb304"),
+&"walk": SubResource("Animation_gic7v")
+}
+
 [node name="Unit" type="Area2D" unique_id=987033715]
 collision_layer = 2
 collision_mask = 4
@@ -27,6 +132,7 @@ attack_scene = ExtResource("2_1jvru")
 [node name="CohesionZone" type="Area2D" parent="." unique_id=631454922]
 collision_layer = 0
 collision_mask = 2
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CohesionZone" unique_id=2070335852]
 shape = SubResource("CircleShape2D_1jvru")
@@ -34,6 +140,7 @@ shape = SubResource("CircleShape2D_1jvru")
 [node name="SeparationZone" type="Area2D" parent="." unique_id=1334941000]
 collision_layer = 0
 collision_mask = 2
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SeparationZone" unique_id=1796613948]
 shape = SubResource("CircleShape2D_6w0u0")
@@ -41,41 +148,28 @@ shape = SubResource("CircleShape2D_6w0u0")
 [node name="AlignmentZone" type="Area2D" parent="." unique_id=396434622]
 collision_layer = 0
 collision_mask = 2
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AlignmentZone" unique_id=484311143]
 shape = SubResource("CircleShape2D_gic7v")
 
-[node name="ChargeZone" type="Area2D" parent="." unique_id=480372510]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ChargeZone" unique_id=10401669]
-shape = SubResource("CircleShape2D_6w0u0")
-
-[node name="AttackZoneMax" type="Area2D" parent="." unique_id=1533061478]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZoneMax" unique_id=2108991861]
-shape = SubResource("CircleShape2D_6w0u0")
-
-[node name="AttackZoneMin" type="Area2D" parent="." unique_id=868095690]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZoneMin" unique_id=1383294052]
-shape = SubResource("CircleShape2D_6w0u0")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1185463035]
 shape = SubResource("CircleShape2D_pgglx")
-
-[node name="Sprite" type="Sprite2D" parent="." unique_id=2097312531]
-position = Vector2(3.8146973e-06, 3.8146973e-06)
-scale = Vector2(0.40625, 0.40625)
-texture = ExtResource("1_o7ajc")
+metadata/_edit_lock_ = true
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=237024507]
 process_callback = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1598142625]
+libraries/ = SubResource("AnimationLibrary_tb304")
+autoplay = &"walk"
+
+[node name="Sprites" type="Node2D" parent="." unique_id=1626931409]
+
+[node name="Sprite" type="Sprite2D" parent="Sprites" unique_id=2097312531]
+position = Vector2(48.999996, -66.999985)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_1jvru")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
