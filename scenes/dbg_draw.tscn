@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://bbfxk2cc8ji5a"]
+
+[ext_resource type="Script" uid="uid://culks587fpi1v" path="res://fps_label.gd" id="1_iejwc"]
+[ext_resource type="Texture2D" uid="uid://dudrkt8gcv8o1" path="res://sprites/spear.png" id="2_uetim"]
+[ext_resource type="Script" uid="uid://ccpmgbipk2j5f" path="res://scenes/draw_tex.gd" id="3_gqdvu"]
+[ext_resource type="Script" uid="uid://cae812q2ispri" path="res://scenes/clear_button.gd" id="4_mmv6w"]
+[ext_resource type="Script" uid="uid://b5eqk2q80bqab" path="res://scenes/similarity_manager.gd" id="5_bql3h"]
+
+[node name="DbgDraw" type="Node2D" unique_id=33689474]
+position = Vector2(256, 360)
+
+[node name="DebugOverlayUI" type="CanvasLayer" parent="." unique_id=18060162]
+
+[node name="FPS Label" type="Label" parent="DebugOverlayUI" unique_id=12278299]
+offset_right = 163.0
+offset_bottom = 31.0
+text = "FPS"
+script = ExtResource("1_iejwc")
+
+[node name="SimilarityLabel" type="Label" parent="DebugOverlayUI" unique_id=1223142836]
+offset_top = 35.0
+offset_right = 192.0
+offset_bottom = 76.0
+text = "Similarity: "
+
+[node name="OriginalLabel" type="Label" parent="DebugOverlayUI" unique_id=931224465]
+offset_left = 204.0
+offset_top = 370.0
+offset_right = 473.0
+offset_bottom = 434.0
+text = "Original Image"
+horizontal_alignment = 1
+
+[node name="DrawAreaLabel" type="Label" parent="DebugOverlayUI" unique_id=704934333]
+offset_left = 1043.0
+offset_top = 356.0
+offset_right = 1156.0
+offset_bottom = 379.0
+text = "Draw Area"
+horizontal_alignment = 1
+
+[node name="Spear" type="Sprite2D" parent="DebugOverlayUI" unique_id=338843878]
+position = Vector2(368, 683)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_uetim")
+
+[node name="TextureRect" type="TextureRect" parent="DebugOverlayUI" unique_id=283286722]
+custom_minimum_size = Vector2(512, 512)
+offset_left = 864.0
+offset_top = 422.0
+offset_right = 1376.0
+offset_bottom = 934.0
+script = ExtResource("3_gqdvu")
+
+[node name="ClearButton" type="Button" parent="DebugOverlayUI" unique_id=696738997 node_paths=PackedStringArray("draw_canvas")]
+offset_left = 1016.0
+offset_top = 963.0
+offset_right = 1205.0
+offset_bottom = 1036.0
+text = "Clear"
+script = ExtResource("4_mmv6w")
+draw_canvas = NodePath("../TextureRect")
+
+[node name="SimilarityManager" type="Node" parent="DebugOverlayUI" unique_id=402587851 node_paths=PackedStringArray("draw_canvas")]
+script = ExtResource("5_bql3h")
+draw_canvas = NodePath("../TextureRect")
