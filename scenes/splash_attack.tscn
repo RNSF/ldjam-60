@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cam86f1y7yf84"]
+
+[ext_resource type="PackedScene" uid="uid://bn82myyvyrj6r" path="res://scenes/attack.tscn" id="1_ebt5e"]
+[ext_resource type="Script" uid="uid://b6lic3nj0g3p8" path="res://scenes/splash_attack.gd" id="2_k15as"]
+[ext_resource type="Texture2D" uid="uid://cl0w2b1rbgid4" path="res://icon.svg" id="3_hk2yt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6w0u0"]
+radius = 147.01361
+
+[node name="SplashAttack" unique_id=1021749223 instance=ExtResource("1_ebt5e")]
+script = ExtResource("2_k15as")
+
+[node name="Area2D" type="Area2D" parent="." index="0" unique_id=1955345943]
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0" unique_id=305667039]
+shape = SubResource("CircleShape2D_6w0u0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1" unique_id=1167103711]
+modulate = Color(1, 0, 1, 1)
+scale = Vector2(2, 2)
+texture = ExtResource("3_hk2yt")
+
+[node name="LifeTimer" type="Timer" parent="." index="2" unique_id=1360893147]
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="LifeTimer" to="." method="_on_life_timer_timeout"]

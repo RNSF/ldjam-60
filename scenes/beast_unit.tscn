@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://b0liejnd6bgoo"]
+
+[ext_resource type="PackedScene" uid="uid://d2w8jclsb2sav" path="res://scenes/unit.tscn" id="1_hx888"]
+[ext_resource type="Texture2D" uid="uid://pqx2glcaxjke" path="res://sprites/beast.png" id="2_qy7vd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qy7vd"]
+resource_local_to_scene = true
+radius = 404.03094
+
+[node name="BeastUnit" unique_id=987033715 instance=ExtResource("1_hx888")]
+
+[node name="CollisionShape2D" parent="CohesionZone" parent_id_path=PackedInt32Array(631454922) index="0" unique_id=2070335852]
+shape = SubResource("CircleShape2D_qy7vd")
+
+[node name="Sprite" parent="." index="7" unique_id=2097312531]
+position = Vector2(19, -34)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("2_qy7vd")

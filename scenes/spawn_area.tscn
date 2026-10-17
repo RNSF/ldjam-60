@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://ckcjugahbyib1"]
+
+[ext_resource type="Script" uid="uid://7ypl2ghsvd3c" path="res://scenes/spawn_area.gd" id="1_au4v6"]
+[ext_resource type="PackedScene" uid="uid://d2w8jclsb2sav" path="res://scenes/unit.tscn" id="2_uwyti"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6w0u0"]
+resource_local_to_scene = true
+size = Vector2(100, 1080)
+
+[node name="SpawnArea" type="Area2D" unique_id=1688502913]
+script = ExtResource("1_au4v6")
+size = Vector2(50, 50)
+unit_scene = ExtResource("2_uwyti")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2145631213]
+shape = SubResource("RectangleShape2D_6w0u0")

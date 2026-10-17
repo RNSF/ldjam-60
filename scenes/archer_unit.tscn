@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bonvpnde2dalv"]
+
+[ext_resource type="PackedScene" uid="uid://d2w8jclsb2sav" path="res://scenes/unit.tscn" id="1_rv0jm"]
+[ext_resource type="Texture2D" uid="uid://daqc7wh270bsy" path="res://sprites/archer.png" id="2_h8sdb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h8sdb"]
+resource_local_to_scene = true
+radius = 404.03094
+
+[node name="ArcherUnit" unique_id=987033715 instance=ExtResource("1_rv0jm")]
+
+[node name="CollisionShape2D" parent="CohesionZone" parent_id_path=PackedInt32Array(631454922) index="0" unique_id=2070335852]
+shape = SubResource("CircleShape2D_h8sdb")
+
+[node name="Sprite" parent="." index="7" unique_id=2097312531]
+position = Vector2(38, -49.000004)
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("2_h8sdb")

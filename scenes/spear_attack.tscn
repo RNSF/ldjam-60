@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://tbn5db0bj2xj"]
+
+[ext_resource type="PackedScene" uid="uid://bn82myyvyrj6r" path="res://scenes/attack.tscn" id="1_p7cbe"]
+[ext_resource type="Script" uid="uid://8ing0pecsc6r" path="res://scenes/spear_attack.gd" id="2_2g86c"]
+
+[node name="SpearAttack" unique_id=1021749223 instance=ExtResource("1_p7cbe")]
+script = ExtResource("2_2g86c")

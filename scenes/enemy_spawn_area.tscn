@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://ctejnl3p7gnfa"]
+
+[ext_resource type="PackedScene" uid="uid://ckcjugahbyib1" path="res://scenes/spawn_area.tscn" id="1_q7wif"]
+[ext_resource type="Script" uid="uid://bas6hs6lw6jrj" path="res://scenes/enemy_spawn_area.gd" id="2_ipkwr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ipkwr"]
+resource_local_to_scene = true
+size = Vector2(50, 50)
+
+[node name="EnemySpawnArea" unique_id=1688502913 instance=ExtResource("1_q7wif")]
+script = ExtResource("2_ipkwr")
+
+[node name="CollisionShape2D" parent="." index="0" unique_id=2145631213]
+shape = SubResource("RectangleShape2D_ipkwr")
+
+[node name="Timer" type="Timer" parent="." index="1" unique_id=282970111]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
