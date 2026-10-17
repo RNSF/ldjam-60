@@ -5,3 +5,14 @@
 *.tmp
 # ignore files created by vim when editing
 *~
+# Ignore godot cpp gen files
+native/godot-cpp/gen
+native/.sconsign.dblite
+*.obj
+*.o
+*.dll
+*.lib
+*.exp
+*.so
+*.dylib
+native/__pycache__
