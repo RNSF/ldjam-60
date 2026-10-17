@@ -2,14 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://bn82myyvyrj6r" path="res://scenes/attack.tscn" id="1_qv861"]
 [ext_resource type="Script" uid="uid://p63ufietoe3k" path="res://scenes/arrow_attack.gd" id="2_dgicr"]
-[ext_resource type="Texture2D" uid="uid://cl0w2b1rbgid4" path="res://icon.svg" id="3_y2rcu"]
+[ext_resource type="Texture2D" uid="uid://dnpydh78u7hkj" path="res://sprites/arrow.png" id="3_y2rcu"]
 
 [node name="Attack" unique_id=1021749223 instance=ExtResource("1_qv861")]
 script = ExtResource("2_dgicr")
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="0" unique_id=1517044376]
-
-[node name="Icon" type="Sprite2D" parent="." index="1" unique_id=1538626736]
-position = Vector2(-48, 0)
-scale = Vector2(0.75, 0.14062503)
+[node name="Arrow" type="Sprite2D" parent="." index="0" unique_id=1858384902]
+position = Vector2(-24.000002, 9.536743e-07)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("3_y2rcu")

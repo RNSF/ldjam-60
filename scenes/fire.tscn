@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://badrqiqu75441"]
+
+[ext_resource type="Shader" uid="uid://32kfdk55cxtr" path="res://scenes/fire.gdshader" id="1_xqmqg"]
+[ext_resource type="Texture2D" uid="uid://cl0w2b1rbgid4" path="res://icon.svg" id="2_g5mbl"]
+
+[sub_resource type="Gradient" id="Gradient_iywne"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_u5sy4"]
+gradient = SubResource("Gradient_iywne")
+
+[sub_resource type="Gradient" id="Gradient_p57ef"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_p57ef"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_iywne"]
+noise = SubResource("FastNoiseLite_p57ef")
+color_ramp = SubResource("Gradient_p57ef")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1jvru"]
+resource_local_to_scene = true
+shader = ExtResource("1_xqmqg")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_iywne")
+shader_parameter/gradient_tex = SubResource("GradientTexture1D_u5sy4")
+shader_parameter/brighter_color = Color(1, 0.8, 0, 1)
+shader_parameter/middle_color = Color(1, 0.56, 0, 1)
+shader_parameter/darker_color = Color(0.64, 0.2, 0.05, 1)
+shader_parameter/spread = 0.53200002527
+
+[node name="Fire" type="Sprite2D" unique_id=2114059335]
+material = SubResource("ShaderMaterial_1jvru")
+scale = Vector2(11.388986, 11.099216)
+texture = ExtResource("2_g5mbl")

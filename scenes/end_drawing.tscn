@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://obijcnqp1qqm"]
+
+[ext_resource type="Script" uid="uid://vtdjtjpu0i64" path="res://scenes/end_drawing.gd" id="2_m0a20"]
+[ext_resource type="Texture2D" uid="uid://dudrkt8gcv8o1" path="res://sprites/spear.png" id="3_dwygs"]
+[ext_resource type="Texture2D" uid="uid://pqx2glcaxjke" path="res://sprites/beast.png" id="4_v2iao"]
+[ext_resource type="Texture2D" uid="uid://daqc7wh270bsy" path="res://sprites/archer.png" id="5_d5xvt"]
+
+[node name="EndDrawing" type="Node2D" unique_id=1759363963]
+script = ExtResource("2_m0a20")
+default_texture_bank = Array[Texture]([ExtResource("3_dwygs"), ExtResource("4_v2iao"), ExtResource("5_d5xvt")])
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1994207835]
+offset_left = -167.0
+offset_top = -156.0
+offset_right = 153.0
+offset_bottom = 164.0
+texture = ExtResource("5_d5xvt")
+expand_mode = 2

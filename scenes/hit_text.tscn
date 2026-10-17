@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://db2vsc3edixks"]
+
+[ext_resource type="FontFile" uid="uid://2ndkktutoqrg" path="res://fonts/cro-magnum-font/CroMagnum-eZzJO.ttf" id="1_13n2x"]
+[ext_resource type="Script" uid="uid://6gd7pu81idpo" path="res://scenes/hit_text.gd" id="1_o005f"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6w0u0"]
+font = ExtResource("1_13n2x")
+font_size = 150
+
+[node name="HitText" type="Node2D" unique_id=790146150]
+script = ExtResource("1_o005f")
+height = 300.0
+
+[node name="TextShadow" type="Label" parent="." unique_id=1330038421]
+modulate = Color(0, 0, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -303.0
+offset_top = -91.0
+offset_right = 303.0
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.9704455, 0.9704455)
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Wave 1"
+label_settings = SubResource("LabelSettings_6w0u0")
+
+[node name="Text" type="Label" parent="." unique_id=354468974]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -303.0
+offset_top = -391.0
+offset_right = 303.0
+offset_bottom = -209.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Wave 1"
+label_settings = SubResource("LabelSettings_6w0u0")
+
+[node name="Timer" type="Timer" parent="." unique_id=2101695747]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

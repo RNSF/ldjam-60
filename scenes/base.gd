@@ -19,4 +19,4 @@ func damage(amount: int) -> void:
 	health -= amount
 	
 	if health <= 0:
-		get_tree().reload_current_scene()
+		Global.go_to_end_screen(false)

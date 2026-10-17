@@ -8,7 +8,7 @@ enum MoveState {
 }
 
 const WALK_FORCE = 10.0
-const ARENA_BOTTOM = 1080 / 2
+const ARENA_BOTTOM = 512 / 2
 const ARENA_TOP = -1080 / 2
 
 @export var size: Vector2
@@ -46,12 +46,22 @@ var health := 5.0 :
 
 @onready var sprites = $Sprites
 @onready var sprite_variation = $Sprites/SpriteVariation
+@onready var sprite = $Sprites/SpriteVariation/Sprite
 @onready var animation_player = $AnimationPlayer
+@onready var attack_origin := $AttackOrigin
 
 enum Type {
 	Spear,
 	Archer,
 	Beast
+}
+
+enum Quality {
+	Fail,
+	Ok,
+	Good,
+	Great,
+	Opus
 }
 
 var hit_flash_percent = 0.0 :
@@ -217,7 +227,8 @@ func _on_attack_timer_timeout() -> void:
 	if target_unit:
 		var attack: Attack = attack_scene.instantiate()
 		get_parent().add_child(attack)
-		attack.global_position = global_position
+		attack.global_position = attack_origin.global_position
+		attack.modulate = color
 		attack.attack(target_unit, attack_strength)
 		animation_player.play("attack")
 		

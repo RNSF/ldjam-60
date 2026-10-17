@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dho3ud1hng7md"]
+
+[ext_resource type="Texture2D" uid="uid://cl0w2b1rbgid4" path="res://icon.svg" id="1_ski18"]
+[ext_resource type="Script" uid="uid://bv03240xndqvq" path="res://scenes/restart_button.gd" id="2_q71u0"]
+
+[node name="RestartButton" type="TextureButton" unique_id=1677186494]
+offset_left = -212.0
+offset_top = 99.0
+offset_right = 212.0
+offset_bottom = 225.0
+texture_normal = ExtResource("1_ski18")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("2_q71u0")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -9,7 +9,7 @@ resource_local_to_scene = true
 radius = 404.03094
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6w0u0"]
-radius = 30.016663
+radius = 70.11419
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gic7v"]
 radius = 371.26407
@@ -169,9 +169,12 @@ autoplay = &"walk"
 [node name="SpriteVariation" type="Node2D" parent="Sprites" unique_id=1382969379]
 
 [node name="Sprite" type="Sprite2D" parent="Sprites/SpriteVariation" unique_id=2097312531]
-position = Vector2(48.999996, -66.999985)
-scale = Vector2(0.1, 0.1)
+position = Vector2(33, -57)
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("3_1jvru")
+
+[node name="AttackOrigin" type="Marker2D" parent="Sprites" unique_id=1702065063]
+position = Vector2(50, -79)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

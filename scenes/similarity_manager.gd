@@ -110,6 +110,25 @@ func _process(_delta: float) -> void:
 		_update_debug_view(lines, drawing_mask, drawing_dist, best_type)
 
 
+func compare(image1: Image, image2: Image) -> Dictionary:
+	var drawing_mask := _prepare(image1)
+	var drawing_dist := _distance_field(drawing_mask, grid_size)
+	
+	var target_mask := _prepare(image2)
+	var target_dist := _distance_field(target_mask, grid_size)
+	
+	var accuracy := _coverage(drawing_mask, target_dist, precision_tolerance)
+	var completeness := _coverage(target_mask, drawing_dist, recall_tolerance)
+	var similarity := _weighted_f_score(accuracy, completeness, recall_weight)
+	
+	return {
+		"similarity": similarity,
+		"completeness": completeness,
+		"accuracy": accuracy
+	}
+	
+
+
 func _notify(enemy_type: int, completeness: float, accuracy: float) -> void:
 	if not _bindings.has(enemy_type):
 		return

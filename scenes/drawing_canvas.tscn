@@ -1,0 +1,180 @@
+[gd_scene format=3 uid="uid://cg3avpxbx6uhy"]
+
+[ext_resource type="Script" uid="uid://culks587fpi1v" path="res://fps_label.gd" id="1_a8m8h"]
+[ext_resource type="Texture2D" uid="uid://dudrkt8gcv8o1" path="res://sprites/spear.png" id="2_0m2ft"]
+[ext_resource type="Script" uid="uid://ctenjkr5pc72u" path="res://scenes/finish_button.gd" id="2_k2tms"]
+[ext_resource type="Script" uid="uid://ccpmgbipk2j5f" path="res://scenes/draw_tex.gd" id="3_k2tms"]
+[ext_resource type="Texture2D" uid="uid://cl0w2b1rbgid4" path="res://icon.svg" id="5_0m2ft"]
+[ext_resource type="Script" uid="uid://b5eqk2q80bqab" path="res://scenes/similarity_manager.gd" id="5_te3rd"]
+[ext_resource type="Script" uid="uid://cleg34nd4xgx3" path="res://scenes/reference_canvas.gd" id="7_k2tms"]
+[ext_resource type="Texture2D" uid="uid://daqc7wh270bsy" path="res://sprites/archer.png" id="8_exj6s"]
+[ext_resource type="Texture2D" uid="uid://05ca8b15f537" path="res://sprites/spear2.png" id="8_o4iku"]
+[ext_resource type="Texture2D" uid="uid://pqx2glcaxjke" path="res://sprites/beast.png" id="9_te3rd"]
+[ext_resource type="Texture2D" uid="uid://cyfvws8b6h423" path="res://sprites/spear3.png" id="9_xsh7j"]
+[ext_resource type="Texture2D" uid="uid://ctp3pivafgq3b" path="res://sprites/archer2.png" id="11_mq30f"]
+[ext_resource type="Texture2D" uid="uid://do7837mqd2gt" path="res://sprites/archer3.png" id="12_8wt2m"]
+
+[node name="DrawingCanvas" type="Control" unique_id=2004841736]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="FPS Label" type="Label" parent="." unique_id=12278299]
+visible = false
+layout_mode = 0
+offset_right = 163.0
+offset_bottom = 31.0
+text = "FPS"
+script = ExtResource("1_a8m8h")
+
+[node name="SimilarityLabel" type="Label" parent="." unique_id=1223142836]
+visible = false
+layout_mode = 0
+offset_top = 35.0
+offset_right = 192.0
+offset_bottom = 76.0
+text = "Similarity: "
+
+[node name="DrawAreaLabel" type="Label" parent="." unique_id=704934333]
+visible = false
+layout_mode = 0
+offset_left = 869.0
+offset_top = 369.0
+offset_right = 982.0
+offset_bottom = 392.0
+text = "Draw Here"
+horizontal_alignment = 1
+
+[node name="FinishButton" type="Button" parent="." unique_id=696738997 node_paths=PackedStringArray("draw_canvas", "reference_canvas", "similarity_manager")]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 372.0
+offset_right = 297.0
+offset_bottom = 445.0
+text = "FINISH!"
+script = ExtResource("2_k2tms")
+draw_canvas = NodePath("../AspectRatioContainer/TextureRect/DrawImageRect")
+reference_canvas = NodePath("../AspectRatioContainer2/TextureRect/ReferenceCanvas")
+similarity_manager = NodePath("../SimilarityManager")
+
+[node name="SimilarityManager" type="Node" parent="." unique_id=402587851 node_paths=PackedStringArray("draw_canvas", "diff_sprite", "similarity_text")]
+script = ExtResource("5_te3rd")
+draw_canvas = NodePath("../AspectRatioContainer/TextureRect/DrawImageRect")
+enemy_types = Array[int]([0, 1, 2])
+is_debug = false
+diff_sprite = NodePath("../DiffImageRect")
+similarity_text = NodePath("../SimilarityLabel")
+
+[node name="DiffImageRect" type="TextureRect" parent="." unique_id=1139564230]
+visible = false
+custom_minimum_size = Vector2(512, 512)
+layout_mode = 0
+offset_left = 1274.0
+offset_top = 423.0
+offset_right = 1786.0
+offset_bottom = 935.0
+
+[node name="DiffImageLabel" type="Label" parent="." unique_id=1135347527]
+visible = false
+layout_mode = 0
+offset_left = 1494.0
+offset_top = 362.0
+offset_right = 1574.0
+offset_bottom = 385.0
+text = "Diff Image"
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="." unique_id=1463232789]
+layout_mode = 0
+offset_right = 363.0
+offset_bottom = 360.0
+
+[node name="TextureRect" type="TextureRect" parent="AspectRatioContainer" unique_id=2071823091]
+layout_mode = 2
+texture = ExtResource("5_0m2ft")
+
+[node name="DrawImageRect" type="TextureRect" parent="AspectRatioContainer/TextureRect" unique_id=283286722]
+custom_minimum_size = Vector2(320, 320)
+custom_maximum_size = Vector2(320, 320)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_k2tms")
+
+[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="." unique_id=1904624317]
+layout_mode = 0
+offset_left = 392.0
+offset_top = 1.0
+offset_right = 755.0
+offset_bottom = 361.0
+
+[node name="TextureRect" type="TextureRect" parent="AspectRatioContainer2" unique_id=1609253482]
+layout_mode = 2
+texture = ExtResource("5_0m2ft")
+metadata/_edit_lock_ = true
+
+[node name="ReferenceCanvas" type="TextureRect" parent="AspectRatioContainer2/TextureRect" unique_id=543195383]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(320, 320)
+custom_maximum_size = Vector2(320, 320)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_0m2ft")
+expand_mode = 2
+script = ExtResource("7_k2tms")
+reference_images = Dictionary[int, Array]({
+0: [ExtResource("2_0m2ft"), ExtResource("8_o4iku"), ExtResource("9_xsh7j")],
+1: [ExtResource("8_exj6s"), ExtResource("11_mq30f"), ExtResource("12_8wt2m")],
+2: [ExtResource("9_te3rd"), ExtResource("9_te3rd"), ExtResource("9_te3rd")]
+})
+metadata/_edit_lock_ = true
+
+[node name="SpearButton" type="TextureButton" parent="AspectRatioContainer2/TextureRect" unique_id=1072045045]
+layout_mode = 0
+offset_left = 28.5
+offset_top = 368.0
+offset_right = 112.5
+offset_bottom = 452.0
+texture_normal = ExtResource("2_0m2ft")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ArcherButton" type="TextureButton" parent="AspectRatioContainer2/TextureRect" unique_id=1470752096]
+layout_mode = 0
+offset_left = 133.5
+offset_top = 368.0
+offset_right = 217.5
+offset_bottom = 452.0
+texture_normal = ExtResource("8_exj6s")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="BeastButton" type="TextureButton" parent="AspectRatioContainer2/TextureRect" unique_id=969553035]
+layout_mode = 0
+offset_left = 238.5
+offset_top = 373.0
+offset_right = 322.5
+offset_bottom = 457.0
+texture_normal = ExtResource("9_te3rd")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="OriginalLabel" type="Label" parent="." unique_id=931224465]
+layout_mode = 0
+offset_left = 441.0
+offset_top = 14.0
+offset_right = 710.0
+offset_bottom = 78.0
+text = "Draw This"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="AspectRatioContainer2/TextureRect/SpearButton" to="AspectRatioContainer2/TextureRect/ReferenceCanvas" method="_on_spear_button_pressed"]
+[connection signal="pressed" from="AspectRatioContainer2/TextureRect/ArcherButton" to="AspectRatioContainer2/TextureRect/ReferenceCanvas" method="_on_archer_button_pressed"]
+[connection signal="pressed" from="AspectRatioContainer2/TextureRect/BeastButton" to="AspectRatioContainer2/TextureRect/ReferenceCanvas" method="_on_beast_button_pressed"]

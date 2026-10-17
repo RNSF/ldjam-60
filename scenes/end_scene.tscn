@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://de4ut1esre7mf"]
+
+[ext_resource type="PackedScene" uid="uid://g3aoxkfm0i5c" path="res://scenes/camera.tscn" id="2_85q8e"]
+[ext_resource type="PackedScene" uid="uid://obijcnqp1qqm" path="res://scenes/end_drawing.tscn" id="2_ojf8p"]
+[ext_resource type="PackedScene" uid="uid://bgyby7cg71nic" path="res://scenes/vignette.tscn" id="4_4835h"]
+[ext_resource type="PackedScene" uid="uid://badrqiqu75441" path="res://scenes/fire.tscn" id="4_ojf8p"]
+[ext_resource type="FontFile" uid="uid://2ndkktutoqrg" path="res://fonts/cro-magnum-font/CroMagnum-eZzJO.ttf" id="5_4835h"]
+[ext_resource type="Script" uid="uid://dnlbwjo7dn0ui" path="res://scenes/end_text.gd" id="6_gxua3"]
+[ext_resource type="PackedScene" uid="uid://dho3ud1hng7md" path="res://scenes/restart_button.tscn" id="7_gxua3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6w0u0"]
+font = ExtResource("5_4835h")
+font_size = 100
+font_color = Color(0, 0, 0, 1)
+
+[node name="EndScene" type="Node2D" unique_id=180096615]
+
+[node name="Fire" parent="." unique_id=2114059335 instance=ExtResource("4_ojf8p")]
+position = Vector2(-26, 456.99997)
+scale = Vector2(6.157, 6)
+
+[node name="EndDrawing" parent="." unique_id=2077073480 instance=ExtResource("2_ojf8p")]
+position = Vector2(-778, -380)
+
+[node name="EndDrawing2" parent="." unique_id=2034789584 instance=ExtResource("2_ojf8p")]
+position = Vector2(-436, -308)
+
+[node name="EndDrawing3" parent="." unique_id=1922152749 instance=ExtResource("2_ojf8p")]
+position = Vector2(-417, -25)
+
+[node name="EndDrawing4" parent="." unique_id=1953923702 instance=ExtResource("2_ojf8p")]
+position = Vector2(431, 6)
+
+[node name="EndDrawing5" parent="." unique_id=1170743920 instance=ExtResource("2_ojf8p")]
+position = Vector2(753, -170)
+
+[node name="EndDrawing6" parent="." unique_id=428893054 instance=ExtResource("2_ojf8p")]
+position = Vector2(-737, 287)
+
+[node name="EndDrawing7" parent="." unique_id=1882388659 instance=ExtResource("2_ojf8p")]
+position = Vector2(711, 202)
+
+[node name="EndDrawing8" parent="." unique_id=1802159668 instance=ExtResource("2_ojf8p")]
+position = Vector2(-685, -60)
+
+[node name="EndDrawing9" parent="." unique_id=758095573 instance=ExtResource("2_ojf8p")]
+position = Vector2(454, -346)
+
+[node name="EndDrawing10" parent="." unique_id=891965089 instance=ExtResource("2_ojf8p")]
+position = Vector2(65, -280)
+
+[node name="Camera2D" parent="." unique_id=1913107566 instance=ExtResource("2_85q8e")]
+
+[node name="Vignette" parent="." unique_id=299465870 instance=ExtResource("4_4835h")]
+offset_left = -974.0
+offset_top = -555.0
+offset_right = 967.0
+offset_bottom = 565.0
+metadata/_edit_lock_ = true
+
+[node name="EndText" type="Label" parent="." unique_id=59817543]
+offset_left = -232.0
+offset_top = -108.0
+offset_right = 244.0
+offset_bottom = 71.0
+text = "You Win"
+label_settings = SubResource("LabelSettings_6w0u0")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("6_gxua3")
+
+[node name="RestartButton" parent="." unique_id=1677186494 instance=ExtResource("7_gxua3")]

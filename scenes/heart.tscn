@@ -2,7 +2,12 @@
 
 [ext_resource type="Script" uid="uid://c5hm48ujceyk5" path="res://scenes/heart.gd" id="1_v30as"]
 [ext_resource type="Texture2D" uid="uid://daqc7wh270bsy" path="res://sprites/archer.png" id="2_krgnv"]
-[ext_resource type="Texture2D" uid="uid://dudrkt8gcv8o1" path="res://sprites/spear.png" id="3_txm48"]
+[ext_resource type="Texture2D" uid="uid://byachetsifnfp" path="res://sprites/heartfull1.png" id="3_oquu7"]
+[ext_resource type="Texture2D" uid="uid://djqjki82c0upw" path="res://sprites/heartfull2.png" id="4_0fb81"]
+[ext_resource type="Texture2D" uid="uid://dq0od6o4cgcth" path="res://sprites/heartfull3.png" id="5_uj202"]
+[ext_resource type="Texture2D" uid="uid://udl4clv7ea82" path="res://sprites/heartempty1.png" id="6_0uc88"]
+[ext_resource type="Texture2D" uid="uid://b3cjxed6bcntc" path="res://sprites/heartempty2.png" id="7_rpd80"]
+[ext_resource type="Texture2D" uid="uid://d28wu4vqb4nqo" path="res://sprites/heartempty3.png" id="8_1cu63"]
 
 [node name="Heart" type="TextureRect" unique_id=1215954451]
 custom_minimum_size = Vector2(100, 100)
@@ -13,5 +18,5 @@ size_flags_horizontal = 3
 texture = ExtResource("2_krgnv")
 expand_mode = 5
 script = ExtResource("1_v30as")
-full_texture = ExtResource("2_krgnv")
-empty_texture = ExtResource("3_txm48")
+full_textures = Array[Texture]([ExtResource("3_oquu7"), ExtResource("4_0fb81"), ExtResource("5_uj202")])
+empty_textures = Array[Texture]([ExtResource("6_0uc88"), ExtResource("7_rpd80"), ExtResource("8_1cu63")])

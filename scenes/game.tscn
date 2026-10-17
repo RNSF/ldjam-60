@@ -1,13 +1,16 @@
 [gd_scene format=3 uid="uid://dq7ll6wxwbln2"]
 
-[ext_resource type="Script" uid="uid://cxfsnsps4lkkq" path="res://scenes/camera_2d.gd" id="1_gee14"]
+[ext_resource type="PackedScene" uid="uid://g3aoxkfm0i5c" path="res://scenes/camera.tscn" id="1_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://cjvmbogs1upmi" path="res://scenes/player_spawn_area.tscn" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://ctejnl3p7gnfa" path="res://scenes/enemy_spawn_area.tscn" id="3_lbhrr"]
 [ext_resource type="Shader" uid="uid://32kfdk55cxtr" path="res://scenes/fire.gdshader" id="4_iywne"]
+[ext_resource type="PackedScene" uid="uid://badrqiqu75441" path="res://scenes/fire.tscn" id="5_gee14"]
 [ext_resource type="PackedScene" uid="uid://caaw1w567383o" path="res://scenes/base.tscn" id="5_iywne"]
-[ext_resource type="Texture2D" uid="uid://cl0w2b1rbgid4" path="res://icon.svg" id="5_p57ef"]
 [ext_resource type="PackedScene" uid="uid://bgyby7cg71nic" path="res://scenes/vignette.tscn" id="6_p57ef"]
 [ext_resource type="PackedScene" uid="uid://b8jkcf28m6kiv" path="res://scenes/healthbar.tscn" id="6_u5sy4"]
+[ext_resource type="Script" uid="uid://cls6hwrorcjb1" path="res://scenes/reaction_fire.gd" id="7_kvpfn"]
+[ext_resource type="PackedScene" uid="uid://cg3avpxbx6uhy" path="res://scenes/drawing_canvas.tscn" id="8_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://db2vsc3edixks" path="res://scenes/hit_text.tscn" id="9_0tnpc"]
 
 [sub_resource type="Gradient" id="Gradient_iywne"]
 
@@ -23,52 +26,77 @@ noise = SubResource("FastNoiseLite_p57ef")
 color_ramp = SubResource("Gradient_p57ef")
 seamless = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1jvru"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dinhu"]
+resource_local_to_scene = true
 shader = ExtResource("4_iywne")
 shader_parameter/noise_tex = SubResource("NoiseTexture2D_iywne")
 shader_parameter/gradient_tex = SubResource("GradientTexture1D_u5sy4")
 shader_parameter/brighter_color = Color(1, 0.8, 0, 1)
 shader_parameter/middle_color = Color(1, 0.56, 0, 1)
 shader_parameter/darker_color = Color(0.64, 0.2, 0.05, 1)
-shader_parameter/spread = 0.53200002527
+shader_parameter/spread = 0.542000025745
 
 [node name="Game" type="Node2D" unique_id=271064872]
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1894630088]
-script = ExtResource("1_gee14")
-decay_rate = null
-max_offset = null
-noise_speed = null
+[node name="Camera2D" parent="." unique_id=1913107566 instance=ExtResource("1_0tnpc")]
+decay_rate = 6.0
+max_offset = Vector2(25, 25)
+noise_speed = 40.0
 
 [node name="PlayerSpawnArea" parent="." unique_id=1688502913 node_paths=PackedStringArray("spawning_parent") instance=ExtResource("2_lnu2h")]
-position = Vector2(-752, 0)
-size = Vector2(200, 1080)
+position = Vector2(-741, 182)
+size = Vector2(200, 700)
 spawning_parent = NodePath("../Units")
 
 [node name="EnemySpawnArea" parent="." unique_id=155568501 node_paths=PackedStringArray("spawning_parent") instance=ExtResource("3_lbhrr")]
-position = Vector2(859, 0)
-size = Vector2(200, 1080)
+position = Vector2(859, 189)
+size = Vector2(200, 700)
 spawning_parent = NodePath("../Units")
 
 [node name="Base" parent="." unique_id=1593357458 node_paths=PackedStringArray("health_bar") instance=ExtResource("5_iywne")]
 position = Vector2(-903, 5)
-health_bar = NodePath("../CanvasLayer/HealthBar")
+health_bar = NodePath("../HealthBar")
 
 [node name="Units" type="Node2D" parent="." unique_id=618549777]
 y_sort_enabled = true
 
-[node name="Icon" type="Sprite2D" parent="." unique_id=475846092]
-material = SubResource("ShaderMaterial_1jvru")
+[node name="Fire" parent="." unique_id=2114059335 instance=ExtResource("5_gee14")]
+material = SubResource("ShaderMaterial_dinhu")
 position = Vector2(-59.999985, 631)
-scale = Vector2(11.388986, 11.099216)
-texture = ExtResource("5_p57ef")
+script = ExtResource("7_kvpfn")
+
+[node name="HitText" parent="." unique_id=790146150 instance=ExtResource("9_0tnpc")]
+position = Vector2(-2, -5)
+height = 0.0
+
+[node name="HealthBar" parent="." unique_id=1821499788 instance=ExtResource("6_u5sy4")]
+offset_left = -155.0
+offset_top = -506.0
+offset_right = 904.0
+offset_bottom = -310.0
+
+[node name="Vignette" parent="." unique_id=299465870 instance=ExtResource("6_p57ef")]
+offset_left = -1064.0001
+offset_top = -656.0
+offset_right = 1068.9999
+offset_bottom = 626.0
+
+[node name="DrawingCanvas" parent="Vignette" unique_id=2004841736 instance=ExtResource("8_0tnpc")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 102.00012
+offset_top = 120.0
+offset_right = 1943.0
+offset_bottom = 1210.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FinishButton" parent="Vignette/DrawingCanvas" index="3" unique_id=696738997 node_paths=PackedStringArray("player_spawn_area", "enemy_spawn_area")]
+player_spawn_area = NodePath("../../../PlayerSpawnArea")
+enemy_spawn_area = NodePath("../../../EnemySpawnArea")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1916661224]
 
-[node name="HealthBar" parent="CanvasLayer" unique_id=1821499788 instance=ExtResource("6_u5sy4")]
-offset_left = 892.0
-offset_top = 28.0
-offset_right = 994.8009
-offset_bottom = 224.0
-
-[node name="Vignette" parent="CanvasLayer" unique_id=299465870 instance=ExtResource("6_p57ef")]
+[editable path="Vignette/DrawingCanvas"]

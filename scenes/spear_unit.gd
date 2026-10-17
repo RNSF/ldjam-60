@@ -10,7 +10,7 @@ func init_stats(upper_body: float, lower_body: float) -> void:
 	speed = lerp(0, 120, lower_body)
 	attack_period = 0.3
 	attack_strength = lerp(0, 2, upper_body)
-	health = 5.0
+	health = lerp(0, 6, body)
 	attack_radius_low = 50.0
 	attack_radius_high = 200.0
 	
