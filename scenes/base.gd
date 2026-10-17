@@ -2,20 +2,20 @@ class_name Base
 extends Area2D
 
 @export var max_health := 10
+@export var health_bar: HealthBar
 
 var health := 10 :
 	set(new_value):
 		health = new_value
-		health_bar.value = health
+		health_bar.health = health
 
-@onready var health_bar := $ProgressBar
 
 func _ready() -> void:
-	health_bar.max_value = max_health
+	health_bar.max_health = max_health
 	health = max_health
 
 
-func damage(amount: float) -> void:
+func damage(amount: int) -> void:
 	health -= amount
 	
 	if health <= 0:

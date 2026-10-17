@@ -166,7 +166,9 @@ autoplay = &"walk"
 
 [node name="Sprites" type="Node2D" parent="." unique_id=1626931409]
 
-[node name="Sprite" type="Sprite2D" parent="Sprites" unique_id=2097312531]
+[node name="SpriteVariation" type="Node2D" parent="Sprites" unique_id=1382969379]
+
+[node name="Sprite" type="Sprite2D" parent="Sprites/SpriteVariation" unique_id=2097312531]
 position = Vector2(48.999996, -66.999985)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_1jvru")

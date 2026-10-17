@@ -30,7 +30,7 @@ var health := 5.0 :
 	set(new_value):
 		health = new_value
 		if health <= 0.0:
-			queue_free()
+			die()
 
 @export var charge_radius := 0.0 # the distance a unit must be within for this unit to 
 								 # start charging at it
@@ -44,7 +44,8 @@ var health := 5.0 :
 @onready var separation_zone := $CohesionZone
 @onready var alignment_zone := $CohesionZone
 
-@onready var sprite = $Sprites
+@onready var sprites = $Sprites
+@onready var sprite_variation = $Sprites/SpriteVariation
 @onready var animation_player = $AnimationPlayer
 
 enum Type {
@@ -90,6 +91,9 @@ var velocity : Vector2
 func _ready() -> void:
 	assert(attack_radius_low <= attack_radius_high)
 	color = color.lightened(randf_range(0.0, 0.2))
+	sprite_variation.scale.x = exp(randf_range(-0.2, 0.2))
+	sprite_variation.scale.y = exp(randf_range(-0.2, 0.2))
+	sprite_variation.rotation = randf_range(-0.2, 0.2)
 	pass # Replace with function body.
 
 
@@ -101,7 +105,7 @@ func init_stats(upper_body: float, lower_body: float) -> void:
 
 
 func init_texture(texture: Texture) -> void:
-	sprite.texture = texture
+	sprites.texture = texture
 
 
 func _find_new_target_unit():
@@ -119,9 +123,9 @@ func _process(delta: float) -> void:
 	hit_flash_percent = lerp(hit_flash_percent, 0.0, 20 * delta)
 	
 	if velocity.x > 0:
-		sprite.scale.x = 1
+		sprites.scale.x = 1
 	elif velocity.x < 0:
-		sprite.scale.x = -1
+		sprites.scale.x = -1
 
 func _physics_process(delta: float) -> void:
 	
@@ -217,6 +221,8 @@ func _on_attack_timer_timeout() -> void:
 		attack.attack(target_unit, attack_strength)
 		animation_player.play("attack")
 		
+		Global.shake_camera(0.05)
+		
 		#if target_unit.move_state != MoveState.FIGHT:
 			#target_unit.target_unit = self
 
@@ -225,9 +231,13 @@ func damage(health_loss: float) -> void:
 	health -= health_loss
 	hit_flash_percent = 1.0
 
+func die() -> void:
+	queue_free()
+	Global.shake_camera(0.3)
+
 
 func _on_area_entered(area: Area2D) -> void:
 	if area is Base and ally_unit_tag == &"enemy":
 		var base: Base = area
 		base.damage(1)
-		queue_free()
+		die()

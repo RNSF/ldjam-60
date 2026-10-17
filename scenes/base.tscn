@@ -13,11 +13,3 @@ script = ExtResource("1_pvqg0")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=616477286]
 position = Vector2(2, 1)
 shape = SubResource("RectangleShape2D_6w0u0")
-
-[node name="ProgressBar" type="ProgressBar" parent="." unique_id=584625338]
-offset_left = 13.999992
-offset_top = -432.0
-offset_right = 367.0
-offset_bottom = -405.0
-rotation = 1.5707964
-scale = Vector2(2.56, 2.56)

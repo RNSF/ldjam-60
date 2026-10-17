@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://b8jkcf28m6kiv"]
+
+[ext_resource type="Script" uid="uid://cm1e303b8kvuh" path="res://scenes/healthbar.gd" id="1_8wl12"]
+[ext_resource type="PackedScene" uid="uid://7b0xpy6285lg" path="res://scenes/heart.tscn" id="2_vjxg4"]
+
+[node name="HealthBar" type="HBoxContainer" unique_id=1821499788]
+offset_right = 1093.0
+offset_bottom = 200.0
+script = ExtResource("1_8wl12")
+heart_scene = ExtResource("2_vjxg4")
+
+[node name="Heart" parent="." unique_id=1215954451 instance=ExtResource("2_vjxg4")]
+layout_mode = 2
+expand_mode = 0

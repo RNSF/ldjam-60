@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://7b0xpy6285lg"]
+
+[ext_resource type="Script" uid="uid://c5hm48ujceyk5" path="res://scenes/heart.gd" id="1_v30as"]
+[ext_resource type="Texture2D" uid="uid://daqc7wh270bsy" path="res://sprites/archer.png" id="2_krgnv"]
+[ext_resource type="Texture2D" uid="uid://dudrkt8gcv8o1" path="res://sprites/spear.png" id="3_txm48"]
+
+[node name="Heart" type="TextureRect" unique_id=1215954451]
+custom_minimum_size = Vector2(100, 100)
+custom_maximum_size = Vector2(100, 100)
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+texture = ExtResource("2_krgnv")
+expand_mode = 5
+script = ExtResource("1_v30as")
+full_texture = ExtResource("2_krgnv")
+empty_texture = ExtResource("3_txm48")

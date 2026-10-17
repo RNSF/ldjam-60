@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://dq7ll6wxwbln2"]
 
+[ext_resource type="Script" uid="uid://cxfsnsps4lkkq" path="res://scenes/camera_2d.gd" id="1_gee14"]
 [ext_resource type="PackedScene" uid="uid://cjvmbogs1upmi" path="res://scenes/player_spawn_area.tscn" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://ctejnl3p7gnfa" path="res://scenes/enemy_spawn_area.tscn" id="3_lbhrr"]
 [ext_resource type="Shader" uid="uid://32kfdk55cxtr" path="res://scenes/fire.gdshader" id="4_iywne"]
 [ext_resource type="PackedScene" uid="uid://caaw1w567383o" path="res://scenes/base.tscn" id="5_iywne"]
 [ext_resource type="Texture2D" uid="uid://cl0w2b1rbgid4" path="res://icon.svg" id="5_p57ef"]
 [ext_resource type="PackedScene" uid="uid://bgyby7cg71nic" path="res://scenes/vignette.tscn" id="6_p57ef"]
+[ext_resource type="PackedScene" uid="uid://b8jkcf28m6kiv" path="res://scenes/healthbar.tscn" id="6_u5sy4"]
 
 [sub_resource type="Gradient" id="Gradient_iywne"]
 
@@ -33,6 +35,10 @@ shader_parameter/spread = 0.53200002527
 [node name="Game" type="Node2D" unique_id=271064872]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1894630088]
+script = ExtResource("1_gee14")
+decay_rate = null
+max_offset = null
+noise_speed = null
 
 [node name="PlayerSpawnArea" parent="." unique_id=1688502913 node_paths=PackedStringArray("spawning_parent") instance=ExtResource("2_lnu2h")]
 position = Vector2(-752, 0)
@@ -44,8 +50,9 @@ position = Vector2(859, 0)
 size = Vector2(200, 1080)
 spawning_parent = NodePath("../Units")
 
-[node name="Base" parent="." unique_id=1593357458 instance=ExtResource("5_iywne")]
+[node name="Base" parent="." unique_id=1593357458 node_paths=PackedStringArray("health_bar") instance=ExtResource("5_iywne")]
 position = Vector2(-903, 5)
+health_bar = NodePath("../CanvasLayer/HealthBar")
 
 [node name="Units" type="Node2D" parent="." unique_id=618549777]
 y_sort_enabled = true
@@ -57,5 +64,11 @@ scale = Vector2(11.388986, 11.099216)
 texture = ExtResource("5_p57ef")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1916661224]
+
+[node name="HealthBar" parent="CanvasLayer" unique_id=1821499788 instance=ExtResource("6_u5sy4")]
+offset_left = 892.0
+offset_top = 28.0
+offset_right = 994.8009
+offset_bottom = 224.0
 
 [node name="Vignette" parent="CanvasLayer" unique_id=299465870 instance=ExtResource("6_p57ef")]
