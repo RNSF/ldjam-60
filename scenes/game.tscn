@@ -11,6 +11,10 @@
 [ext_resource type="Script" uid="uid://cls6hwrorcjb1" path="res://scenes/reaction_fire.gd" id="7_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://cg3avpxbx6uhy" path="res://scenes/drawing_canvas.tscn" id="8_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://db2vsc3edixks" path="res://scenes/hit_text.tscn" id="9_0tnpc"]
+[ext_resource type="Script" uid="uid://u1hfp26hmcm8" path="res://scenes/game_music.gd" id="12_dinhu"]
+[ext_resource type="AudioStream" uid="uid://bpulnjg7uduqd" path="res://audio/music/stage_1.mp3" id="13_ir15t"]
+[ext_resource type="AudioStream" uid="uid://cylj0m1oqm3ea" path="res://audio/music/stage_2.mp3" id="14_ca42v"]
+[ext_resource type="AudioStream" uid="uid://bqvyu02nelx0u" path="res://audio/music/stage_3.mp3" id="15_rysoc"]
 
 [sub_resource type="Gradient" id="Gradient_iywne"]
 
@@ -26,7 +30,7 @@ noise = SubResource("FastNoiseLite_p57ef")
 color_ramp = SubResource("Gradient_p57ef")
 seamless = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dinhu"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kvuet"]
 resource_local_to_scene = true
 shader = ExtResource("4_iywne")
 shader_parameter/noise_tex = SubResource("NoiseTexture2D_iywne")
@@ -61,7 +65,7 @@ health_bar = NodePath("../HealthBar")
 y_sort_enabled = true
 
 [node name="Fire" parent="." unique_id=2114059335 instance=ExtResource("5_gee14")]
-material = SubResource("ShaderMaterial_dinhu")
+material = SubResource("ShaderMaterial_kvuet")
 position = Vector2(-59.999985, 631)
 script = ExtResource("7_kvpfn")
 
@@ -93,10 +97,17 @@ offset_bottom = 1210.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="FinishButton" parent="Vignette/DrawingCanvas" index="3" unique_id=696738997 node_paths=PackedStringArray("player_spawn_area", "enemy_spawn_area")]
+[node name="FinishButton" parent="Vignette/DrawingCanvas" index="3" unique_id=2147250083 node_paths=PackedStringArray("player_spawn_area", "enemy_spawn_area")]
 player_spawn_area = NodePath("../../../PlayerSpawnArea")
 enemy_spawn_area = NodePath("../../../EnemySpawnArea")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1916661224]
+
+[node name="GameMusic" type="AudioStreamPlayer" parent="." unique_id=1198606259]
+script = ExtResource("12_dinhu")
+music_0 = ExtResource("13_ir15t")
+music_1 = ExtResource("13_ir15t")
+music_2 = ExtResource("14_ca42v")
+music_3 = ExtResource("15_rysoc")
 
 [editable path="Vignette/DrawingCanvas"]

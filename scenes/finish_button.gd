@@ -7,7 +7,15 @@ extends Button
 @export var enemy_spawn_area : EnemySpawnArea
 
 
+@onready var fail_sound := $Fail
+@onready var ok_sound := $Ok
+@onready var good_sound := $Good
+@onready var great_sound := $Great
+@onready var magnum_opus_sound := $MagnumOpus
+
 func get_quality(strength: float) -> Unit.Quality:
+	
+	return Unit.Quality.Opus
 	
 	if strength < 0.5:
 		return Unit.Quality.Fail
@@ -32,6 +40,19 @@ func _gui_input(event: InputEvent) -> void:
 			var strength : float = min(similarity_score.similarity, similarity_score.completeness, similarity_score.accuracy)
 			
 			var quality := get_quality(strength)
+			
+			match quality:
+				Unit.Quality.Fail:
+					fail_sound.play()
+				Unit.Quality.Ok:
+					ok_sound.play()
+				Unit.Quality.Good:
+					good_sound.play()
+				Unit.Quality.Great:
+					great_sound.play()
+				Unit.Quality.Opus:
+					magnum_opus_sound.play()
+					Global.show_hit_text("Magnum Opus")
 			
 			if quality != Unit.Quality.Fail:
 				

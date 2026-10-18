@@ -106,6 +106,7 @@ func spawn_unit_batch(unit_type: Unit.Type, count: int) -> void:
 		spawning_parent.add_child(unit)
 
 func _check_for_next_wave():
+	if !get_tree(): return
 	if wave_index >= enemy_bank[wave_number].size() and get_tree().get_nodes_in_group(&"enemy").size() == 0:
 		start_wave()
 

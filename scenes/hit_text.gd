@@ -1,4 +1,3 @@
-@tool
 class_name HitText
 extends Node2D
 
@@ -11,14 +10,15 @@ extends Node2D
 		height = new_value
 		if !is_node_ready(): return
 		text_label.position.y = text_shadow_label.position.y - height
-		text_shadow_label.scale = Vector2.ONE * exp(-height * 0.0001)
+		
 
 @export var text : String = "Wave 1" :
 	set(new_value):
 		text = new_value
 		if !is_node_ready(): return
-		text_label.text = new_value
-		text_shadow_label.text = new_value
+		text_label.text = text
+		text_shadow_label.text = text
+		text_shadow_label.position = -text_shadow_label.size / 2
 
 
 var velocity : Vector2
@@ -26,11 +26,12 @@ var is_falling := false
 
 
 func show_text(text_to_show: String):
+	if is_falling: return
 	height = 300
-	text = text_to_show
 	is_falling = true
 	visible = true
-	
+	text = text_to_show
+	timer.stop()
 
 func _ready() -> void:
 	height = 0
@@ -55,7 +56,6 @@ func _physics_process(delta: float) -> void:
 		print("BOOM")
 		is_falling = false
 		timer.start(3.0)
-		text_shadow_label.visible = false
 		
 	height = new_height
 

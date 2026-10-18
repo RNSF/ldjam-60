@@ -48,7 +48,7 @@ var health := 5.0 :
 @onready var sprite_variation = $Sprites/SpriteVariation
 @onready var sprite = $Sprites/SpriteVariation/Sprite
 @onready var animation_player = $AnimationPlayer
-@onready var attack_origin := $AttackOrigin
+@onready var attack_origin := $Sprites/AttackOrigin
 
 enum Type {
 	Spear,

@@ -3,7 +3,7 @@ extends TextureRect
 class_name DrawTexture
 
 var image: Image
-var brush_radius := 8
+var brush_radius := 6
 var brush_color := Color.BLACK
 var _last_pos := Vector2i(-1, -1)
 

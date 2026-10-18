@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://culks587fpi1v" path="res://fps_label.gd" id="1_a8m8h"]
 [ext_resource type="Texture2D" uid="uid://dudrkt8gcv8o1" path="res://sprites/spear.png" id="2_0m2ft"]
-[ext_resource type="Script" uid="uid://ctenjkr5pc72u" path="res://scenes/finish_button.gd" id="2_k2tms"]
+[ext_resource type="PackedScene" uid="uid://bhmdn0kuffurn" path="res://scenes/finish_button.tscn" id="2_o4iku"]
 [ext_resource type="Script" uid="uid://ccpmgbipk2j5f" path="res://scenes/draw_tex.gd" id="3_k2tms"]
 [ext_resource type="Texture2D" uid="uid://cl0w2b1rbgid4" path="res://icon.svg" id="5_0m2ft"]
 [ext_resource type="Script" uid="uid://b5eqk2q80bqab" path="res://scenes/similarity_manager.gd" id="5_te3rd"]
@@ -46,14 +46,12 @@ offset_bottom = 392.0
 text = "Draw Here"
 horizontal_alignment = 1
 
-[node name="FinishButton" type="Button" parent="." unique_id=696738997 node_paths=PackedStringArray("draw_canvas", "reference_canvas", "similarity_manager")]
+[node name="FinishButton" parent="." unique_id=2147250083 node_paths=PackedStringArray("draw_canvas", "reference_canvas", "similarity_manager") instance=ExtResource("2_o4iku")]
 layout_mode = 0
-offset_left = 63.0
+offset_left = 66.0
 offset_top = 372.0
-offset_right = 297.0
+offset_right = 300.0
 offset_bottom = 445.0
-text = "FINISH!"
-script = ExtResource("2_k2tms")
 draw_canvas = NodePath("../AspectRatioContainer/TextureRect/DrawImageRect")
 reference_canvas = NodePath("../AspectRatioContainer2/TextureRect/ReferenceCanvas")
 similarity_manager = NodePath("../SimilarityManager")
