@@ -17,3 +17,5 @@ native/.sconsign.dblite
 *.dylib
 native/__pycache__
 .vscode/
+
+exports/

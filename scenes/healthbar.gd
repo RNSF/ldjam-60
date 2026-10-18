@@ -23,7 +23,7 @@ var health : int = 10 :
 		print(health)
 		for i in get_child_count():
 			var heart: Heart = get_child(i)
-			heart.is_full = i <= health
+			heart.is_full = i < health
 
 
 func _ready() -> void:
