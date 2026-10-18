@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dq7ll6wxwbln2"]
 
 [ext_resource type="PackedScene" uid="uid://g3aoxkfm0i5c" path="res://scenes/camera.tscn" id="1_0tnpc"]
+[ext_resource type="Texture2D" uid="uid://b80i2e2kib0c1" path="res://sprites/background.png" id="1_ca42v"]
 [ext_resource type="PackedScene" uid="uid://cjvmbogs1upmi" path="res://scenes/player_spawn_area.tscn" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://ctejnl3p7gnfa" path="res://scenes/enemy_spawn_area.tscn" id="3_lbhrr"]
 [ext_resource type="Shader" uid="uid://32kfdk55cxtr" path="res://scenes/fire.gdshader" id="4_iywne"]
@@ -30,7 +31,7 @@ noise = SubResource("FastNoiseLite_p57ef")
 color_ramp = SubResource("Gradient_p57ef")
 seamless = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ir15t"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ca42v"]
 resource_local_to_scene = true
 shader = ExtResource("4_iywne")
 shader_parameter/noise_tex = SubResource("NoiseTexture2D_iywne")
@@ -41,6 +42,10 @@ shader_parameter/darker_color = Color(0.64, 0.2, 0.05, 1)
 shader_parameter/spread = 0.542000025745
 
 [node name="Game" type="Node2D" unique_id=271064872]
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1113953588]
+position = Vector2(-3, 8)
+texture = ExtResource("1_ca42v")
 
 [node name="Camera2D" parent="." unique_id=1913107566 instance=ExtResource("1_0tnpc")]
 decay_rate = 6.0
@@ -65,7 +70,7 @@ health_bar = NodePath("../HealthBar")
 y_sort_enabled = true
 
 [node name="Fire" parent="." unique_id=2114059335 instance=ExtResource("5_gee14")]
-material = SubResource("ShaderMaterial_ir15t")
+material = SubResource("ShaderMaterial_ca42v")
 position = Vector2(-59.999985, 631)
 script = ExtResource("7_kvpfn")
 
@@ -76,10 +81,12 @@ offset_right = 904.0
 offset_bottom = -310.0
 
 [node name="Vignette" parent="." unique_id=299465870 instance=ExtResource("6_p57ef")]
-offset_left = -1064.0001
-offset_top = -656.0
-offset_right = 1068.9999
-offset_bottom = 626.0
+offset_left = -1101.0
+offset_top = -601.0
+offset_right = 1032.0
+offset_bottom = 681.0
+min_alpha = 0.8
+max_alpha = 1.0
 
 [node name="DrawingCanvas" parent="." unique_id=2004841736 instance=ExtResource("8_0tnpc")]
 anchors_preset = 15

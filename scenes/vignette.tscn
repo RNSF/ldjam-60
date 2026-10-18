@@ -5,8 +5,8 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5awcn"]
 shader = ExtResource("1_7sab7")
-shader_parameter/color = Color(0.81960785, 0.39607844, 0, 1)
-shader_parameter/alpha = 0.44305688291788103
+shader_parameter/color = Color(0.2144889, 0.08398881, 2.4065375e-08, 1)
+shader_parameter/alpha = 1.0
 shader_parameter/inner_radius = 0.0
 shader_parameter/outer_radius = 5.0
 

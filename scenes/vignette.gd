@@ -1,4 +1,3 @@
-@tool
 extends TextureRect
 
 @export var noise_speed: float = 10.0      # How fast the flicker changes
