@@ -8,6 +8,9 @@
 [ext_resource type="FontFile" uid="uid://2ndkktutoqrg" path="res://fonts/cro-magnum-font/CroMagnum-eZzJO.ttf" id="5_4835h"]
 [ext_resource type="Script" uid="uid://dnlbwjo7dn0ui" path="res://scenes/end_text.gd" id="6_gxua3"]
 [ext_resource type="PackedScene" uid="uid://dho3ud1hng7md" path="res://scenes/restart_button.tscn" id="7_gxua3"]
+[ext_resource type="Script" uid="uid://c2lxtxfc1y4mn" path="res://scenes/win_loss_music.gd" id="9_notft"]
+[ext_resource type="AudioStream" uid="uid://qrsnooa8f713" path="res://audio/music/win_end.mp3" id="10_24b1x"]
+[ext_resource type="AudioStream" uid="uid://blj00rvrpommp" path="res://audio/music/loss_end.mp3" id="11_i4wik"]
 
 [sub_resource type="Gradient" id="Gradient_iywne"]
 
@@ -99,3 +102,8 @@ script = ExtResource("6_gxua3")
 
 [node name="EndDrawing10" parent="." unique_id=891965089 instance=ExtResource("2_ojf8p")]
 position = Vector2(65, -280)
+
+[node name="WinLossMusic" type="AudioStreamPlayer" parent="." unique_id=737820473]
+script = ExtResource("9_notft")
+win_music = ExtResource("10_24b1x")
+loss_music = ExtResource("11_i4wik")

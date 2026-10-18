@@ -28,9 +28,16 @@ func get_spawn_locations(unit_size: Vector2, spawn_position: Vector2, count: int
 	if count < 1:
 		return []
 	
+	var total_unit_spawn_size = unit_size.y * (count - 1)
+	
+	spawn_position.y = clamp(spawn_position.y, \
+		global_position.y - size.y / 2 + total_unit_spawn_size, global_position.y + size.y / 2 - total_unit_spawn_size)
+	
 	var spawn_locations: Array[Vector2] = []
 	var next_spawn_position = spawn_position
 	next_spawn_position.y = spawn_position.y - unit_size.y * (count - 1) / 2
+	
+
 	
 	for i in range(count):
 		spawn_locations.append(next_spawn_position)

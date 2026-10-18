@@ -58,7 +58,7 @@ func start_wave() -> void:
 		Global.show_hit_text(["Wave 1", "Wave 2", "Final Wave"][wave_number])
 		[first_wave_sound, second_wave_sound, third_wave_sound][wave_number].play()
 	else:
-		print("All waves completed!")
+		Global.go_to_end_screen(true)
 		timer.stop()
 
 

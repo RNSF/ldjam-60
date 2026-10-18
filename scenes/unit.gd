@@ -8,8 +8,8 @@ enum MoveState {
 }
 
 const WALK_FORCE = 10.0
-const ARENA_BOTTOM = 512 / 2
-const ARENA_TOP = -1080 / 2
+const ARENA_BOTTOM = 1080 / 2
+const ARENA_TOP = -100 / 2
 
 @export var size: Vector2
 @export var attack_scene: PackedScene
@@ -199,8 +199,8 @@ func _physics_process(delta: float) -> void:
 			func(v: Vector2, x: Unit): return v + x.velocity, Vector2.ZERO) / max(alignment_units.size(), 1)
 		
 		
-		walk_vector += 1.0 * (cohesion_target - global_position)
-		walk_vector += 20.0 * separation_vector
+		#walk_vector += 1.0 * (cohesion_target - global_position)
+		walk_vector += 30.0 * separation_vector
 		walk_vector += 1.0 * (average_neighbor_speed - velocity)
 		walk_vector += 100.0 * target_walk_direction
 		walk_vector += 100.0 * (clamp(remap(abs(position.y - ARENA_TOP), 0, 200, 1, 0), 0, 1) * Vector2.DOWN \

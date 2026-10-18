@@ -8,6 +8,7 @@ var max_health : int = 10 :
 	set(new_value):
 		max_health = new_value
 		for child in get_children():
+			remove_child(child)
 			child.queue_free()
 		
 		for i in range(max_health):
@@ -19,6 +20,7 @@ var max_health : int = 10 :
 var health : int = 10 :
 	set(new_value):
 		health = new_value
+		print(health)
 		for i in get_child_count():
 			var heart: Heart = get_child(i)
 			heart.is_full = i <= health
@@ -26,3 +28,4 @@ var health : int = 10 :
 
 func _ready() -> void:
 	max_health = max_health
+	health = max_health

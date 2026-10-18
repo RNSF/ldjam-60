@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dudrkt8gcv8o1" path="res://sprites/spear.png" id="2_0m2ft"]
 [ext_resource type="PackedScene" uid="uid://bhmdn0kuffurn" path="res://scenes/finish_button.tscn" id="2_o4iku"]
 [ext_resource type="Script" uid="uid://ccpmgbipk2j5f" path="res://scenes/draw_tex.gd" id="3_k2tms"]
-[ext_resource type="Texture2D" uid="uid://cl0w2b1rbgid4" path="res://icon.svg" id="5_0m2ft"]
+[ext_resource type="Texture2D" uid="uid://ilxjlsi7hjsb" path="res://sprites/drawing_tablet.png" id="4_o4iku"]
 [ext_resource type="Script" uid="uid://b5eqk2q80bqab" path="res://scenes/similarity_manager.gd" id="5_te3rd"]
 [ext_resource type="Script" uid="uid://cleg34nd4xgx3" path="res://scenes/reference_canvas.gd" id="7_k2tms"]
 [ext_resource type="Texture2D" uid="uid://daqc7wh270bsy" path="res://sprites/archer.png" id="8_exj6s"]
@@ -48,10 +48,11 @@ horizontal_alignment = 1
 
 [node name="FinishButton" parent="." unique_id=2147250083 node_paths=PackedStringArray("draw_canvas", "reference_canvas", "similarity_manager") instance=ExtResource("2_o4iku")]
 layout_mode = 0
-offset_left = 66.0
-offset_top = 372.0
-offset_right = 300.0
-offset_bottom = 445.0
+offset_left = 73.0
+offset_top = 402.0
+offset_right = 307.0
+offset_bottom = 475.0
+scale = Vector2(1.0203149, 0.8497116)
 draw_canvas = NodePath("../AspectRatioContainer/TextureRect/DrawImageRect")
 reference_canvas = NodePath("../AspectRatioContainer2/TextureRect/ReferenceCanvas")
 similarity_manager = NodePath("../SimilarityManager")
@@ -89,7 +90,7 @@ offset_bottom = 360.0
 
 [node name="TextureRect" type="TextureRect" parent="AspectRatioContainer" unique_id=2071823091]
 layout_mode = 2
-texture = ExtResource("5_0m2ft")
+texture = ExtResource("4_o4iku")
 
 [node name="DrawImageRect" type="TextureRect" parent="AspectRatioContainer/TextureRect" unique_id=283286722]
 custom_minimum_size = Vector2(320, 320)
@@ -101,6 +102,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_k2tms")
+outline_color = Color(1, 0, 0, 0)
 
 [node name="AspectRatioContainer2" type="AspectRatioContainer" parent="." unique_id=1904624317]
 layout_mode = 0
@@ -111,7 +113,7 @@ offset_bottom = 361.0
 
 [node name="TextureRect" type="TextureRect" parent="AspectRatioContainer2" unique_id=1609253482]
 layout_mode = 2
-texture = ExtResource("5_0m2ft")
+texture = ExtResource("4_o4iku")
 metadata/_edit_lock_ = true
 
 [node name="ReferenceCanvas" type="TextureRect" parent="AspectRatioContainer2/TextureRect" unique_id=543195383]

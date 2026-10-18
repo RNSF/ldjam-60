@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://d28wu4vqb4nqo" path="res://sprites/heartempty3.png" id="8_1cu63"]
 
 [node name="Heart" type="TextureRect" unique_id=1215954451]
+modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(100, 100)
 custom_maximum_size = Vector2(100, 100)
 offset_right = 40.0
