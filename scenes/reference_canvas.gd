@@ -33,9 +33,12 @@ func randomize_image_variation() -> void:
 
 func _on_spear_button_pressed() -> void:
 	unit_type = Unit.Type.Spear
+	$ClickSound.play()
 
 func _on_archer_button_pressed() -> void:
 	unit_type = Unit.Type.Archer
+	$ClickSound.play()
 
 func _on_beast_button_pressed() -> void:
 	unit_type = Unit.Type.Beast
+	$ClickSound.play()

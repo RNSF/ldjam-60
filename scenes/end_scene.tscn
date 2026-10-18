@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://de4ut1esre7mf"]
 
+[ext_resource type="Texture2D" uid="uid://b80i2e2kib0c1" path="res://sprites/background.png" id="1_i4wik"]
 [ext_resource type="PackedScene" uid="uid://g3aoxkfm0i5c" path="res://scenes/camera.tscn" id="2_85q8e"]
 [ext_resource type="Shader" uid="uid://32kfdk55cxtr" path="res://scenes/fire.gdshader" id="2_hyprt"]
 [ext_resource type="PackedScene" uid="uid://obijcnqp1qqm" path="res://scenes/end_drawing.tscn" id="2_ojf8p"]
@@ -10,7 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://dho3ud1hng7md" path="res://scenes/restart_button.tscn" id="7_gxua3"]
 [ext_resource type="Script" uid="uid://c2lxtxfc1y4mn" path="res://scenes/win_loss_music.gd" id="9_notft"]
 [ext_resource type="AudioStream" uid="uid://qrsnooa8f713" path="res://audio/music/win_end.mp3" id="10_24b1x"]
+[ext_resource type="Texture2D" uid="uid://d317hsyfehom0" path="res://sprites/retry1.png" id="10_k4w31"]
 [ext_resource type="AudioStream" uid="uid://blj00rvrpommp" path="res://audio/music/loss_end.mp3" id="11_i4wik"]
+[ext_resource type="Texture2D" uid="uid://bq2cdp4xnkfc6" path="res://sprites/retry3.png" id="11_lgqhb"]
+[ext_resource type="Texture2D" uid="uid://ccxnuvmki6ea5" path="res://sprites/retry2.png" id="12_cl4u6"]
 
 [sub_resource type="Gradient" id="Gradient_iywne"]
 
@@ -26,7 +30,7 @@ noise = SubResource("FastNoiseLite_p57ef")
 color_ramp = SubResource("Gradient_p57ef")
 seamless = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_notft"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wfflf"]
 resource_local_to_scene = true
 shader = ExtResource("2_hyprt")
 shader_parameter/noise_tex = SubResource("NoiseTexture2D_iywne")
@@ -43,8 +47,12 @@ font_color = Color(0, 0, 0, 1)
 
 [node name="EndScene" type="Node2D" unique_id=180096615]
 
+[node name="Background" type="Sprite2D" parent="." unique_id=714079063]
+position = Vector2(-3, 8)
+texture = ExtResource("1_i4wik")
+
 [node name="Fire" parent="." unique_id=2114059335 instance=ExtResource("4_ojf8p")]
-material = SubResource("ShaderMaterial_notft")
+material = SubResource("ShaderMaterial_wfflf")
 position = Vector2(-26, 456.99997)
 scale = Vector2(6.157, 6)
 
@@ -99,6 +107,9 @@ vertical_alignment = 1
 script = ExtResource("6_gxua3")
 
 [node name="RestartButton" parent="." unique_id=1677186494 instance=ExtResource("7_gxua3")]
+texture_normal = ExtResource("10_k4w31")
+texture_pressed = ExtResource("11_lgqhb")
+texture_hover = ExtResource("12_cl4u6")
 
 [node name="EndDrawing10" parent="." unique_id=891965089 instance=ExtResource("2_ojf8p")]
 position = Vector2(65, -280)

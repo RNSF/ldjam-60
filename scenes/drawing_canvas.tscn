@@ -13,6 +13,28 @@
 [ext_resource type="Texture2D" uid="uid://cyfvws8b6h423" path="res://sprites/spear3.png" id="9_xsh7j"]
 [ext_resource type="Texture2D" uid="uid://ctp3pivafgq3b" path="res://sprites/archer2.png" id="11_mq30f"]
 [ext_resource type="Texture2D" uid="uid://do7837mqd2gt" path="res://sprites/archer3.png" id="12_8wt2m"]
+[ext_resource type="Texture2D" uid="uid://conpdwi4nd1sg" path="res://sprites/spearbutton1.png" id="14_f1o5w"]
+[ext_resource type="AudioStream" uid="uid://c4jiduppsavut" path="res://audio/sounds/click_1.wav" id="14_y3o2s"]
+[ext_resource type="Texture2D" uid="uid://6ix5ai4jopuf" path="res://sprites/spearbutton3.png" id="15_idqbm"]
+[ext_resource type="AudioStream" uid="uid://cn53kpq0ikwbm" path="res://audio/sounds/click_2.wav" id="15_qmrph"]
+[ext_resource type="Texture2D" uid="uid://d1mvg8jo77sn" path="res://sprites/spearbutton2.png" id="16_5giyk"]
+[ext_resource type="AudioStream" uid="uid://daqwu2hs4da4" path="res://audio/sounds/click_3.wav" id="16_x7ply"]
+[ext_resource type="Texture2D" uid="uid://d3okiu8e66fw" path="res://sprites/archerbutton1.png" id="17_gjrak"]
+[ext_resource type="Texture2D" uid="uid://lxgny8ubsa7n" path="res://sprites/archerbutton3.png" id="18_y3o2s"]
+[ext_resource type="Texture2D" uid="uid://cj4ljc3ejjvol" path="res://sprites/archerbutton2.png" id="19_qmrph"]
+[ext_resource type="Texture2D" uid="uid://d0gs7ywn0ebcd" path="res://sprites/archerbutton4.png" id="20_x7ply"]
+[ext_resource type="Texture2D" uid="uid://cngurwkyqr8i4" path="res://sprites/beastbutton1.png" id="21_by072"]
+[ext_resource type="Texture2D" uid="uid://bkcuuigseiqjp" path="res://sprites/beastbutton3.png" id="22_xday3"]
+[ext_resource type="Texture2D" uid="uid://0xljtpnl1l6a" path="res://sprites/beastbutton2.png" id="23_t8vn1"]
+[ext_resource type="Texture2D" uid="uid://b3ek1ylf2tcwn" path="res://sprites/beastbutton4.png" id="24_idqbm"]
+[ext_resource type="Script" uid="uid://ckdtk5msiaq7d" path="res://scenes/archer_button.gd" id="24_x7ply"]
+[ext_resource type="Script" uid="uid://cmgu71bo1vfil" path="res://scenes/beast_button.gd" id="29_by072"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_by072"]
+streams_count = 3
+stream_0/stream = ExtResource("14_y3o2s")
+stream_1/stream = ExtResource("15_qmrph")
+stream_2/stream = ExtResource("16_x7ply")
 
 [node name="DrawingCanvas" type="Control" unique_id=2004841736]
 layout_mode = 3
@@ -48,11 +70,11 @@ horizontal_alignment = 1
 
 [node name="FinishButton" parent="." unique_id=2147250083 node_paths=PackedStringArray("draw_canvas", "reference_canvas", "similarity_manager") instance=ExtResource("2_o4iku")]
 layout_mode = 0
-offset_left = 0.0
-offset_top = 287.0
-offset_right = 400.0
-offset_bottom = 687.0
-scale = Vector2(1.0203149, 0.8497116)
+offset_left = 7.0
+offset_top = 11.0
+offset_right = 123.0
+offset_bottom = 389.0
+scale = Vector2(1.2, 1)
 draw_canvas = NodePath("../AspectRatioContainer/TextureRect/DrawImageRect")
 reference_canvas = NodePath("../AspectRatioContainer2/TextureRect/ReferenceCanvas")
 similarity_manager = NodePath("../SimilarityManager")
@@ -85,12 +107,15 @@ text = "Diff Image"
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="." unique_id=1463232789]
 layout_mode = 0
-offset_right = 363.0
-offset_bottom = 360.0
+offset_left = 145.0
+offset_top = 2.0
+offset_right = 545.0
+offset_bottom = 402.0
 
 [node name="TextureRect" type="TextureRect" parent="AspectRatioContainer" unique_id=2071823091]
 layout_mode = 2
 texture = ExtResource("4_o4iku")
+metadata/_edit_lock_ = true
 
 [node name="DrawImageRect" type="TextureRect" parent="AspectRatioContainer/TextureRect" unique_id=283286722]
 custom_minimum_size = Vector2(320, 320)
@@ -103,13 +128,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_k2tms")
 outline_color = Color(1, 0, 0, 0)
+metadata/_edit_lock_ = true
 
 [node name="AspectRatioContainer2" type="AspectRatioContainer" parent="." unique_id=1904624317]
 layout_mode = 0
-offset_left = 392.0
+offset_left = 534.0
 offset_top = 1.0
-offset_right = 755.0
-offset_bottom = 361.0
+offset_right = 934.0
+offset_bottom = 401.0
 
 [node name="TextureRect" type="TextureRect" parent="AspectRatioContainer2" unique_id=1609253482]
 layout_mode = 2
@@ -136,35 +162,42 @@ reference_images = Dictionary[int, Array]({
 })
 metadata/_edit_lock_ = true
 
+[node name="ClickSound" type="AudioStreamPlayer" parent="AspectRatioContainer2/TextureRect/ReferenceCanvas" unique_id=2048498786]
+stream = SubResource("AudioStreamRandomizer_by072")
+
 [node name="SpearButton" type="TextureButton" parent="AspectRatioContainer2/TextureRect" unique_id=1072045045]
 layout_mode = 0
-offset_left = 28.5
-offset_top = 368.0
-offset_right = 112.5
-offset_bottom = 452.0
-texture_normal = ExtResource("2_0m2ft")
-ignore_texture_size = true
-stretch_mode = 0
+offset_left = 403.0
+offset_top = 21.0
+offset_right = 522.0
+offset_bottom = 135.0
+texture_normal = ExtResource("14_f1o5w")
+texture_pressed = ExtResource("15_idqbm")
+texture_hover = ExtResource("16_5giyk")
 
 [node name="ArcherButton" type="TextureButton" parent="AspectRatioContainer2/TextureRect" unique_id=1470752096]
 layout_mode = 0
-offset_left = 133.5
-offset_top = 368.0
-offset_right = 217.5
-offset_bottom = 452.0
-texture_normal = ExtResource("8_exj6s")
-ignore_texture_size = true
-stretch_mode = 0
+offset_left = 404.0
+offset_top = 141.0
+offset_right = 523.0
+offset_bottom = 255.0
+texture_normal = ExtResource("17_gjrak")
+texture_pressed = ExtResource("18_y3o2s")
+texture_hover = ExtResource("19_qmrph")
+texture_disabled = ExtResource("20_x7ply")
+script = ExtResource("24_x7ply")
 
 [node name="BeastButton" type="TextureButton" parent="AspectRatioContainer2/TextureRect" unique_id=969553035]
 layout_mode = 0
-offset_left = 238.5
-offset_top = 373.0
-offset_right = 322.5
-offset_bottom = 457.0
-texture_normal = ExtResource("9_te3rd")
-ignore_texture_size = true
-stretch_mode = 0
+offset_left = 405.0
+offset_top = 263.0
+offset_right = 524.0
+offset_bottom = 377.0
+texture_normal = ExtResource("21_by072")
+texture_pressed = ExtResource("22_xday3")
+texture_hover = ExtResource("23_t8vn1")
+texture_disabled = ExtResource("24_idqbm")
+script = ExtResource("29_by072")
 
 [node name="OriginalLabel" type="Label" parent="." unique_id=931224465]
 layout_mode = 0

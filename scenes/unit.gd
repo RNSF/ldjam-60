@@ -68,6 +68,7 @@ var hit_flash_percent = 0.0 :
 	set(new_value):
 		hit_flash_percent = new_value
 		modulate = color.lerp(Color.WHITE, hit_flash_percent)
+		modulate.a = 0.8
 
 
 var move_state: MoveState = MoveState.WALK :

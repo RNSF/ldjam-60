@@ -3,7 +3,7 @@
 [ext_resource type="Shader" uid="uid://32kfdk55cxtr" path="res://scenes/fire.gdshader" id="1_rtisj"]
 [ext_resource type="Texture2D" uid="uid://cl0w2b1rbgid4" path="res://icon.svg" id="2_jo0g0"]
 [ext_resource type="Script" uid="uid://ongeai5o2cbl" path="res://scenes/fire_transition.gd" id="3_0enwo"]
-[ext_resource type="AudioStream" uid="uid://bodsxjiytndrf" path="res://audio/sounds/fire_transition.wav" id="3_jo0g0"]
+[ext_resource type="AudioStream" uid="uid://nq028eex1n5v" path="res://audio/sounds/fire_transition_better.wav" id="4_0enwo"]
 
 [sub_resource type="Gradient" id="Gradient_0enwo"]
 
@@ -105,7 +105,7 @@ texture = ExtResource("2_jo0g0")
 script = ExtResource("3_0enwo")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1479064130]
-stream = ExtResource("3_jo0g0")
+stream = ExtResource("4_0enwo")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1054193733]
 libraries/ = SubResource("AnimationLibrary_f55hw")

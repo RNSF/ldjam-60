@@ -12,7 +12,7 @@ script = ExtResource("1_o005f")
 height = 300.0
 
 [node name="TextShadow" type="Label" parent="." unique_id=1330038421]
-modulate = Color(0, 0, 0, 1)
+modulate = Color(0, 0, 0, 0.3137255)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

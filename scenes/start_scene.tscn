@@ -1,11 +1,15 @@
 [gd_scene format=3 uid="uid://v1etrrcq8u4i"]
 
 [ext_resource type="PackedScene" uid="uid://badrqiqu75441" path="res://scenes/fire.tscn" id="1_2l3yw"]
+[ext_resource type="Texture2D" uid="uid://b80i2e2kib0c1" path="res://sprites/background.png" id="1_2525w"]
 [ext_resource type="Shader" uid="uid://32kfdk55cxtr" path="res://scenes/fire.gdshader" id="2_0kdh5"]
 [ext_resource type="PackedScene" uid="uid://g3aoxkfm0i5c" path="res://scenes/camera.tscn" id="3_6vkx6"]
 [ext_resource type="PackedScene" uid="uid://bgyby7cg71nic" path="res://scenes/vignette.tscn" id="4_u6lbi"]
 [ext_resource type="AudioStream" uid="uid://hg8jlbtoj23q" path="res://audio/music/menu_loop.mp3" id="6_sg87u"]
 [ext_resource type="PackedScene" uid="uid://dho3ud1hng7md" path="res://scenes/restart_button.tscn" id="7_2ddlt"]
+[ext_resource type="Texture2D" uid="uid://kap08oow773n" path="res://sprites/start1.png" id="7_u6lbi"]
+[ext_resource type="Texture2D" uid="uid://cychwkxp4hiyl" path="res://sprites/start3.png" id="8_3dgwj"]
+[ext_resource type="Texture2D" uid="uid://cgokxlhiupsmv" path="res://sprites/start2.png" id="9_o01gw"]
 
 [sub_resource type="Gradient" id="Gradient_iywne"]
 
@@ -21,7 +25,7 @@ noise = SubResource("FastNoiseLite_p57ef")
 color_ramp = SubResource("Gradient_p57ef")
 seamless = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2l3yw"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6vkx6"]
 resource_local_to_scene = true
 shader = ExtResource("2_0kdh5")
 shader_parameter/noise_tex = SubResource("NoiseTexture2D_iywne")
@@ -33,8 +37,12 @@ shader_parameter/spread = 0.53200002527
 
 [node name="StartScene" type="Node2D" unique_id=180096615]
 
+[node name="Background" type="Sprite2D" parent="." unique_id=128737236]
+position = Vector2(-3, 8)
+texture = ExtResource("1_2525w")
+
 [node name="Fire" parent="." unique_id=2114059335 instance=ExtResource("1_2l3yw")]
-material = SubResource("ShaderMaterial_2l3yw")
+material = SubResource("ShaderMaterial_6vkx6")
 position = Vector2(-26, 456.99997)
 scale = Vector2(6.157, 6)
 
@@ -48,6 +56,15 @@ offset_bottom = 565.0
 metadata/_edit_lock_ = true
 
 [node name="RestartButton" parent="." unique_id=1677186494 instance=ExtResource("7_2ddlt")]
+offset_left = -187.0
+offset_top = 48.0
+offset_right = 206.0
+offset_bottom = 216.0
+texture_normal = ExtResource("7_u6lbi")
+texture_pressed = ExtResource("8_3dgwj")
+texture_hover = ExtResource("9_o01gw")
+ignore_texture_size = false
+stretch_mode = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1729058886]
 stream = ExtResource("6_sg87u")

@@ -103,7 +103,7 @@ func spawn_unit_batch(unit_type: Unit.Type, count: int) -> void:
 		unit.enemy_unit_tag = &"player"
 		unit.ally_unit_tag = &"enemy"
 		unit.target_x = -1920 / 2
-		unit.color = Color.RED
+		unit.color = Color("#7A2F2A")
 		unit.charge_radius = 300
 		unit.init_stats(0.7, 0.7)
 		unit.global_position = spawn_location

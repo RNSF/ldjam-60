@@ -75,10 +75,68 @@ position = Vector2(-59.999985, 631)
 script = ExtResource("7_kvpfn")
 
 [node name="HealthBar" parent="." unique_id=1821499788 instance=ExtResource("6_u5sy4")]
-offset_left = -155.0
-offset_top = -506.0
-offset_right = 904.0
-offset_bottom = -310.0
+offset_left = -953.0
+offset_top = -135.0
+offset_right = -694.0
+offset_bottom = 549.0
+
+[node name="Heart" parent="HealthBar" index="0" unique_id=1215954451]
+offset_left = 84.0
+offset_top = 567.0
+offset_right = 184.0
+offset_bottom = 667.0
+
+[node name="Heart2" parent="HealthBar" index="1" unique_id=1287488170]
+offset_left = 79.0
+offset_top = 64.0
+offset_right = 179.0
+offset_bottom = 164.0
+
+[node name="Heart3" parent="HealthBar" index="2" unique_id=306501250]
+offset_left = -7.0
+offset_top = 111.0
+offset_right = 93.0
+offset_bottom = 211.0
+
+[node name="Heart4" parent="HealthBar" index="3" unique_id=105123800]
+offset_left = 75.0
+offset_top = 188.0
+offset_right = 175.0
+offset_bottom = 288.0
+
+[node name="Heart5" parent="HealthBar" index="4" unique_id=1936825642]
+offset_left = 6.0
+offset_top = 295.0
+offset_right = 106.0
+offset_bottom = 395.0
+
+[node name="Heart6" parent="HealthBar" index="5" unique_id=1200371188]
+offset_left = 86.0
+offset_top = 355.0
+offset_right = 186.0
+offset_bottom = 455.0
+
+[node name="Heart7" parent="HealthBar" index="6" unique_id=1804783796]
+offset_left = -12.0
+offset_top = 409.0
+offset_right = 88.0
+offset_bottom = 509.0
+
+[node name="Heart8" parent="HealthBar" index="7" unique_id=1576284278]
+offset_left = 116.0
+offset_top = 466.0
+offset_right = 216.0
+offset_bottom = 566.0
+
+[node name="Heart9" parent="HealthBar" index="8" unique_id=1638196029]
+offset_left = 2.0
+offset_top = 543.0
+offset_right = 102.0
+offset_bottom = 643.0
+
+[node name="Heart10" parent="HealthBar" index="9" unique_id=931586193]
+offset_right = 100.0
+offset_bottom = 100.0
 
 [node name="Vignette" parent="." unique_id=299465870 instance=ExtResource("6_p57ef")]
 offset_left = -1101.0
@@ -116,4 +174,5 @@ music_1 = ExtResource("13_ir15t")
 music_2 = ExtResource("14_ca42v")
 music_3 = ExtResource("15_rysoc")
 
+[editable path="HealthBar"]
 [editable path="DrawingCanvas"]

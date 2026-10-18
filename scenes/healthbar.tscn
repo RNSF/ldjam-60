@@ -3,12 +3,40 @@
 [ext_resource type="Script" uid="uid://cm1e303b8kvuh" path="res://scenes/healthbar.gd" id="1_8wl12"]
 [ext_resource type="PackedScene" uid="uid://7b0xpy6285lg" path="res://scenes/heart.tscn" id="2_vjxg4"]
 
-[node name="HealthBar" type="HBoxContainer" unique_id=1821499788]
+[node name="HealthBar" type="Control" unique_id=1362870951]
+layout_mode = 3
+anchors_preset = 0
 offset_right = 1093.0
 offset_bottom = 200.0
 script = ExtResource("1_8wl12")
 heart_scene = ExtResource("2_vjxg4")
 
 [node name="Heart" parent="." unique_id=1215954451 instance=ExtResource("2_vjxg4")]
-layout_mode = 2
-expand_mode = 0
+layout_mode = 0
+
+[node name="Heart2" parent="." unique_id=1287488170 instance=ExtResource("2_vjxg4")]
+layout_mode = 0
+
+[node name="Heart3" parent="." unique_id=306501250 instance=ExtResource("2_vjxg4")]
+layout_mode = 0
+
+[node name="Heart4" parent="." unique_id=105123800 instance=ExtResource("2_vjxg4")]
+layout_mode = 0
+
+[node name="Heart5" parent="." unique_id=1936825642 instance=ExtResource("2_vjxg4")]
+layout_mode = 0
+
+[node name="Heart6" parent="." unique_id=1200371188 instance=ExtResource("2_vjxg4")]
+layout_mode = 0
+
+[node name="Heart7" parent="." unique_id=1804783796 instance=ExtResource("2_vjxg4")]
+layout_mode = 0
+
+[node name="Heart8" parent="." unique_id=1576284278 instance=ExtResource("2_vjxg4")]
+layout_mode = 0
+
+[node name="Heart9" parent="." unique_id=1638196029 instance=ExtResource("2_vjxg4")]
+layout_mode = 0
+
+[node name="Heart10" parent="." unique_id=931586193 instance=ExtResource("2_vjxg4")]
+layout_mode = 0
