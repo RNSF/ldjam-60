@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="LDJAM 60"
-run/main_scene="uid://v1etrrcq8u4i"
+run/main_scene="uid://cqfm87hi6xyc5"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 

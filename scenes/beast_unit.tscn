@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cam86f1y7yf84" path="res://scenes/splash_attack.tscn" id="3_7abxr"]
 [ext_resource type="AudioStream" uid="uid://cqtstjwvnktdi" path="res://audio/sounds/mammoth_death.wav" id="5_q1lfk"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_nvlsw"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_q1lfk"]
 resource_local_to_scene = true
 radius = 404.03094
 
@@ -20,7 +20,7 @@ size = Vector2(40, 20)
 attack_scene = ExtResource("3_7abxr")
 
 [node name="CollisionShape2D" parent="CohesionZone" parent_id_path=PackedInt32Array(631454922) index="0" unique_id=2070335852]
-shape = SubResource("CircleShape2D_nvlsw")
+shape = SubResource("CircleShape2D_q1lfk")
 
 [node name="Sprite" parent="Sprites/SpriteVariation" parent_id_path=PackedInt32Array(1382969379) index="0" unique_id=2097312531]
 position = Vector2(32, -64)
