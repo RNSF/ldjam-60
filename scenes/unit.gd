@@ -229,6 +229,7 @@ func _on_attack_timer_timeout() -> void:
 		attack.modulate = color
 		attack.attack(target_unit, attack_strength)
 		animation_player.play("attack")
+		$AttackSound.play()
 		
 		Global.shake_camera(0.05)
 		
@@ -240,7 +241,12 @@ func damage(health_loss: float) -> void:
 	health -= health_loss
 	hit_flash_percent = 1.0
 
+@onready var death_sound := $DeathSound
+
 func die() -> void:
+	remove_child(death_sound)
+	get_parent().add_child(death_sound)
+	death_sound.play()
 	queue_free()
 	Global.shake_camera(0.3)
 

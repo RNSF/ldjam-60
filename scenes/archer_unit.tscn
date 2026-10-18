@@ -2,16 +2,48 @@
 
 [ext_resource type="PackedScene" uid="uid://d2w8jclsb2sav" path="res://scenes/unit.tscn" id="1_rv0jm"]
 [ext_resource type="Script" uid="uid://c3hiunrkke045" path="res://scenes/archer_unit.gd" id="2_wdo82"]
+[ext_resource type="AudioStream" uid="uid://d2deatqp63wk6" path="res://audio/sounds/bow_death_1.wav" id="3_b8jtt"]
+[ext_resource type="AudioStream" uid="uid://c7sk7eiyjg1qd" path="res://audio/sounds/bow_death_2.wav" id="4_cod2s"]
+[ext_resource type="AudioStream" uid="uid://c8ercjmqvbi25" path="res://audio/sounds/bow_death_3.wav" id="5_6ff7u"]
+[ext_resource type="AudioStream" uid="uid://vtj0jl0b7y7o" path="res://audio/sounds/bow_death_4.wav" id="6_m1g1l"]
+[ext_resource type="AudioStream" uid="uid://eo4prb3iq261" path="res://audio/sounds/bow_death_5.wav" id="7_ikgnh"]
+[ext_resource type="AudioStream" uid="uid://dovrsp6kldok2" path="res://audio/sounds/bow_attack_1.wav" id="8_pbphm"]
+[ext_resource type="AudioStream" uid="uid://bwvuh1n11sww8" path="res://audio/sounds/bow_attack_2.wav" id="9_i8epn"]
+[ext_resource type="AudioStream" uid="uid://fy1dseylcitk" path="res://audio/sounds/bow_attack_3.wav" id="10_m518m"]
+[ext_resource type="AudioStream" uid="uid://dm2x8pcggvmrk" path="res://audio/sounds/bow_attack_4.wav" id="11_ethkm"]
+[ext_resource type="AudioStream" uid="uid://g1kty8fv8a5x" path="res://audio/sounds/bow_attack_5.wav" id="12_d67m8"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_h8sdb"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_pbphm"]
 resource_local_to_scene = true
 radius = 404.03094
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gic7v"]
+streams_count = 5
+stream_0/stream = ExtResource("3_b8jtt")
+stream_1/stream = ExtResource("4_cod2s")
+stream_2/stream = ExtResource("5_6ff7u")
+stream_3/stream = ExtResource("6_m1g1l")
+stream_4/stream = ExtResource("7_ikgnh")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_i8epn"]
+streams_count = 5
+stream_0/stream = ExtResource("8_pbphm")
+stream_1/stream = ExtResource("9_i8epn")
+stream_2/stream = ExtResource("10_m518m")
+stream_3/stream = ExtResource("11_ethkm")
+stream_4/stream = ExtResource("12_d67m8")
 
 [node name="ArcherUnit" unique_id=987033715 instance=ExtResource("1_rv0jm")]
 script = ExtResource("2_wdo82")
 
 [node name="CollisionShape2D" parent="CohesionZone" parent_id_path=PackedInt32Array(631454922) index="0" unique_id=2070335852]
-shape = SubResource("CircleShape2D_h8sdb")
+shape = SubResource("CircleShape2D_pbphm")
 
-[node name="Sprite" parent="Sprites" parent_id_path=PackedInt32Array(1626931409) index="0" unique_id=2097312531]
+[node name="Sprite" parent="Sprites/SpriteVariation" parent_id_path=PackedInt32Array(1382969379) index="0" unique_id=2097312531]
 position = Vector2(51, -69)
+
+[node name="DeathSound" parent="." index="7" unique_id=2074620542]
+stream = SubResource("AudioStreamRandomizer_gic7v")
+
+[node name="AttackSound" parent="." index="8" unique_id=2067458577]
+stream = SubResource("AudioStreamRandomizer_i8epn")
