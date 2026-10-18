@@ -3,8 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://d2w8jclsb2sav" path="res://scenes/unit.tscn" id="1_rv0jm"]
 [ext_resource type="Script" uid="uid://c3hiunrkke045" path="res://scenes/archer_unit.gd" id="2_wdo82"]
 [ext_resource type="AudioStream" uid="uid://d2deatqp63wk6" path="res://audio/sounds/bow_death_1.wav" id="3_b8jtt"]
+[ext_resource type="Texture2D" uid="uid://daqc7wh270bsy" path="res://sprites/archer.png" id="3_ethkm"]
 [ext_resource type="AudioStream" uid="uid://c7sk7eiyjg1qd" path="res://audio/sounds/bow_death_2.wav" id="4_cod2s"]
+[ext_resource type="Texture2D" uid="uid://ctp3pivafgq3b" path="res://sprites/archer2.png" id="4_d67m8"]
 [ext_resource type="AudioStream" uid="uid://c8ercjmqvbi25" path="res://audio/sounds/bow_death_3.wav" id="5_6ff7u"]
+[ext_resource type="Texture2D" uid="uid://do7837mqd2gt" path="res://sprites/archer3.png" id="5_p35go"]
 [ext_resource type="AudioStream" uid="uid://vtj0jl0b7y7o" path="res://audio/sounds/bow_death_4.wav" id="6_m1g1l"]
 [ext_resource type="AudioStream" uid="uid://eo4prb3iq261" path="res://audio/sounds/bow_death_5.wav" id="7_ikgnh"]
 [ext_resource type="AudioStream" uid="uid://dovrsp6kldok2" path="res://audio/sounds/bow_attack_1.wav" id="8_pbphm"]
@@ -13,7 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://dm2x8pcggvmrk" path="res://audio/sounds/bow_attack_4.wav" id="11_ethkm"]
 [ext_resource type="AudioStream" uid="uid://g1kty8fv8a5x" path="res://audio/sounds/bow_attack_5.wav" id="12_d67m8"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_pbphm"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_4otuf"]
 resource_local_to_scene = true
 radius = 404.03094
 
@@ -35,9 +38,10 @@ stream_4/stream = ExtResource("12_d67m8")
 
 [node name="ArcherUnit" unique_id=987033715 instance=ExtResource("1_rv0jm")]
 script = ExtResource("2_wdo82")
+possible_textures = Array[Texture]([ExtResource("3_ethkm"), ExtResource("4_d67m8"), ExtResource("5_p35go")])
 
 [node name="CollisionShape2D" parent="CohesionZone" parent_id_path=PackedInt32Array(631454922) index="0" unique_id=2070335852]
-shape = SubResource("CircleShape2D_pbphm")
+shape = SubResource("CircleShape2D_4otuf")
 
 [node name="Sprite" parent="Sprites/SpriteVariation" parent_id_path=PackedInt32Array(1382969379) index="0" unique_id=2097312531]
 position = Vector2(51, -69)

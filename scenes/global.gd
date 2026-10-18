@@ -9,6 +9,9 @@ var did_win := false
 var hit_text : HitText
 var master_scene : MasterScene
 
+func _ready() -> void:
+	randomize()
+
 func shake_camera(amount: float) -> void:
 	if is_instance_valid(camera):
 		camera.add_shake(amount)

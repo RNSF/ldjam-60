@@ -2,6 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://2ndkktutoqrg" path="res://fonts/cro-magnum-font/CroMagnum-eZzJO.ttf" id="1_13n2x"]
 [ext_resource type="Script" uid="uid://6gd7pu81idpo" path="res://scenes/hit_text.gd" id="1_o005f"]
+[ext_resource type="AudioStream" uid="uid://cea13gj5qxms5" path="res://audio/sounds/text_slam.wav" id="3_j2hmu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6w0u0"]
 font = ExtResource("1_13n2x")
@@ -28,6 +29,8 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Wave 1"
 label_settings = SubResource("LabelSettings_6w0u0")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Text" type="Label" parent="." unique_id=354468974]
 anchors_preset = 8
@@ -43,7 +46,13 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Wave 1"
 label_settings = SubResource("LabelSettings_6w0u0")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="." unique_id=2101695747]
+
+[node name="SlamSound" type="AudioStreamPlayer" parent="." unique_id=1495272673]
+stream = ExtResource("3_j2hmu")
+pitch_scale = 0.8
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -4,8 +4,10 @@
 [ext_resource type="Script" uid="uid://pemfurh71v5e" path="res://scenes/beast_unit.gd" id="2_qei5j"]
 [ext_resource type="Texture2D" uid="uid://pqx2glcaxjke" path="res://sprites/beast.png" id="2_qy7vd"]
 [ext_resource type="PackedScene" uid="uid://cam86f1y7yf84" path="res://scenes/splash_attack.tscn" id="3_7abxr"]
+[ext_resource type="Texture2D" uid="uid://bpd3lqhi80b51" path="res://sprites/beast1.png" id="5_eahq6"]
 [ext_resource type="AudioStream" uid="uid://cqtstjwvnktdi" path="res://audio/sounds/mammoth_death.wav" id="5_q1lfk"]
 [ext_resource type="AudioStream" uid="uid://5w02jtgfhf20" path="res://audio/sounds/mammoth_attack.wav" id="6_nvlsw"]
+[ext_resource type="Texture2D" uid="uid://d1x3ol0s5c2ef" path="res://sprites/beast2.png" id="6_wu144"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5v7qs"]
 resource_local_to_scene = true
@@ -19,6 +21,7 @@ stream_0/stream = ExtResource("5_q1lfk")
 script = ExtResource("2_qei5j")
 size = Vector2(40, 20)
 attack_scene = ExtResource("3_7abxr")
+possible_textures = Array[Texture]([ExtResource("2_qy7vd"), ExtResource("5_eahq6"), ExtResource("6_wu144")])
 
 [node name="CollisionShape2D" parent="CohesionZone" parent_id_path=PackedInt32Array(631454922) index="0" unique_id=2070335852]
 shape = SubResource("CircleShape2D_5v7qs")

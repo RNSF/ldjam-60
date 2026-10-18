@@ -8,6 +8,6 @@
 script = ExtResource("2_dgicr")
 
 [node name="Arrow" type="Sprite2D" parent="." index="0" unique_id=1858384902]
-position = Vector2(-24.000002, 9.536743e-07)
-scale = Vector2(0.2, 0.2)
+position = Vector2(-50, 5.684342e-14)
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("3_y2rcu")

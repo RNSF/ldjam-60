@@ -5,7 +5,7 @@ extends TextureButton
 @export var similarity_manager: SimilarityManager
 @export var player_spawn_area : PlayerSpawnArea
 @export var enemy_spawn_area : EnemySpawnArea
-
+@export var flash_text : FlashText
 
 @onready var fail_sound := $Fail
 @onready var ok_sound := $Ok
@@ -16,6 +16,8 @@ extends TextureButton
 var is_started := false
 
 func get_quality(strength: float) -> Unit.Quality:
+	
+	
 	
 	if strength < 0.5:
 		return Unit.Quality.Fail
@@ -48,20 +50,26 @@ func _on_pressed() -> void:
 	match quality:
 		Unit.Quality.Fail:
 			fail_sound.play()
+			flash_text.show_text("Too Uglee", Color.RED) #TODO(ARI)
 		Unit.Quality.Ok:
 			ok_sound.play()
+			flash_text.show_text("OK", Color.YELLOW) #TODO(ARI)
 		Unit.Quality.Good:
 			good_sound.play()
+			flash_text.show_text("Gud", Color.YELLOW_GREEN) #TODO(ARI)
 		Unit.Quality.Great:
 			great_sound.play()
+			flash_text.show_text("Grate", Color.GREEN) #TODO(ARI)
 		Unit.Quality.Opus:
 			magnum_opus_sound.play()
+			#flash_text.show_text("Magnum Opus", Color.AQUA) #TODO(ARI)
 			Global.show_hit_text("Magnum Opus")
 	
 	if quality != Unit.Quality.Fail:
 		
 		print(strength)
 		print(quality)
+		reference_canvas.randomize_image_variation()
 		Global.texture_cache.append(texture)
 		player_spawn_area.summon_from_texture(texture, strength, quality, reference_canvas.unit_type)
 		
@@ -70,6 +78,6 @@ func _on_pressed() -> void:
 			await get_tree().create_timer(2.0).timeout
 			enemy_spawn_area.start_wave()
 	
-	reference_canvas.randomize_image_variation()
+	
 	
 	pass # Replace with function body.

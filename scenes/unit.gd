@@ -18,6 +18,8 @@ const ARENA_TOP = -100 / 2
 @export var ally_unit_tag : StringName
 @export var enemy_unit_tag : StringName 
 
+@export var possible_textures : Array[Texture]
+
 
 var speed := 100.0
 var attack_period := 1.0
@@ -105,6 +107,10 @@ func _ready() -> void:
 	sprite_variation.scale.x = exp(randf_range(-0.2, 0.2))
 	sprite_variation.scale.y = exp(randf_range(-0.2, 0.2))
 	sprite_variation.rotation = randf_range(-0.2, 0.2)
+	
+	if ally_unit_tag == &"enemy":
+		sprite.texture = possible_textures.pick_random()
+	
 	pass # Replace with function body.
 
 

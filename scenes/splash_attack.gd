@@ -18,6 +18,8 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area is Unit and area.is_in_group(hit_tag):
 		var unit := area
 		unit.damage(damage)
+		print("MAMMOTH HIT")
+		print(damage)
 
 
 func _on_animated_sprite_2d_animation_finished() -> void:

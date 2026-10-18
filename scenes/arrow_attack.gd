@@ -1,6 +1,6 @@
 extends Attack
 
-const SPEED := 500.0
+const SPEED := 2000.0
 
 var is_active := false
 var damage : float

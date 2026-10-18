@@ -55,6 +55,7 @@ func _physics_process(delta: float) -> void:
 		Global.shake_camera(1.0)
 		is_falling = false
 		timer.start(3.0)
+		$SlamSound.play()
 		
 	height = new_height
 

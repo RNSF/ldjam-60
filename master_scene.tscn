@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cf21ju4yvlhkt" path="res://scenes/fire_transition.tscn" id="1_40lka"]
 [ext_resource type="Script" uid="uid://dvs460eem6yp0" path="res://master_scene.gd" id="1_mee4f"]
+[ext_resource type="AudioStream" uid="uid://c0rqi0je4jw7n" path="res://audio/sounds/fire_loop.mp3" id="3_fgsy8"]
 
 [node name="MasterScene" type="Node" unique_id=662208865]
 script = ExtResource("1_mee4f")
@@ -11,5 +12,10 @@ script = ExtResource("1_mee4f")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=546302478]
 
 [node name="FireTransition" parent="CanvasLayer" unique_id=724411047 instance=ExtResource("1_40lka")]
+
+[node name="Fire" type="AudioStreamPlayer" parent="." unique_id=974604481]
+stream = ExtResource("3_fgsy8")
+volume_db = -6.0
+autoplay = true
 
 [connection signal="transition" from="CanvasLayer/FireTransition" to="." method="_on_fire_transition_transition"]

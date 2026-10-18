@@ -58,12 +58,12 @@ size = Vector2(200, 700)
 spawning_parent = NodePath("../Units")
 
 [node name="EnemySpawnArea" parent="." unique_id=155568501 node_paths=PackedStringArray("spawning_parent") instance=ExtResource("3_lbhrr")]
-position = Vector2(1092, 185)
+position = Vector2(918, 187)
 size = Vector2(200, 700)
 spawning_parent = NodePath("../Units")
 
 [node name="Base" parent="." unique_id=1593357458 node_paths=PackedStringArray("health_bar") instance=ExtResource("5_iywne")]
-position = Vector2(-1038, 5)
+position = Vector2(-965, 3)
 health_bar = NodePath("../HealthBar")
 
 [node name="Units" type="Node2D" parent="." unique_id=618549777]
@@ -138,14 +138,6 @@ offset_bottom = 643.0
 offset_right = 100.0
 offset_bottom = 100.0
 
-[node name="Vignette" parent="." unique_id=299465870 instance=ExtResource("6_p57ef")]
-offset_left = -1101.0
-offset_top = -601.0
-offset_right = 1032.0
-offset_bottom = 681.0
-min_alpha = 0.8
-max_alpha = 1.0
-
 [node name="DrawingCanvas" parent="." unique_id=2004841736 instance=ExtResource("8_0tnpc")]
 anchors_preset = 15
 anchor_right = 1.0
@@ -160,6 +152,12 @@ grow_vertical = 2
 [node name="FinishButton" parent="DrawingCanvas" index="3" unique_id=2147250083 node_paths=PackedStringArray("player_spawn_area", "enemy_spawn_area")]
 player_spawn_area = NodePath("../../PlayerSpawnArea")
 enemy_spawn_area = NodePath("../../EnemySpawnArea")
+
+[node name="Vignette" parent="." unique_id=299465870 instance=ExtResource("6_p57ef")]
+offset_left = -1101.0
+offset_top = -601.0
+offset_right = 1032.0
+offset_bottom = 681.0
 
 [node name="HitText" parent="." unique_id=790146150 instance=ExtResource("9_0tnpc")]
 position = Vector2(-2, -5)

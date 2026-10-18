@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://ccpmgbipk2j5f" path="res://scenes/draw_tex.gd" id="3_k2tms"]
 [ext_resource type="Texture2D" uid="uid://ilxjlsi7hjsb" path="res://sprites/drawing_tablet.png" id="4_o4iku"]
 [ext_resource type="Script" uid="uid://b5eqk2q80bqab" path="res://scenes/similarity_manager.gd" id="5_te3rd"]
+[ext_resource type="PackedScene" uid="uid://22in8b3u3t7a" path="res://scenes/flash_text.tscn" id="6_xday3"]
 [ext_resource type="Script" uid="uid://cleg34nd4xgx3" path="res://scenes/reference_canvas.gd" id="7_k2tms"]
 [ext_resource type="Texture2D" uid="uid://daqc7wh270bsy" path="res://sprites/archer.png" id="8_exj6s"]
 [ext_resource type="Texture2D" uid="uid://05ca8b15f537" path="res://sprites/spear2.png" id="8_o4iku"]
@@ -15,8 +16,10 @@
 [ext_resource type="Texture2D" uid="uid://do7837mqd2gt" path="res://sprites/archer3.png" id="12_8wt2m"]
 [ext_resource type="Texture2D" uid="uid://conpdwi4nd1sg" path="res://sprites/spearbutton1.png" id="14_f1o5w"]
 [ext_resource type="AudioStream" uid="uid://c4jiduppsavut" path="res://audio/sounds/click_1.wav" id="14_y3o2s"]
+[ext_resource type="Texture2D" uid="uid://bpd3lqhi80b51" path="res://sprites/beast1.png" id="15_h7xdb"]
 [ext_resource type="Texture2D" uid="uid://6ix5ai4jopuf" path="res://sprites/spearbutton3.png" id="15_idqbm"]
 [ext_resource type="AudioStream" uid="uid://cn53kpq0ikwbm" path="res://audio/sounds/click_2.wav" id="15_qmrph"]
+[ext_resource type="Texture2D" uid="uid://d1x3ol0s5c2ef" path="res://sprites/beast2.png" id="16_3doxt"]
 [ext_resource type="Texture2D" uid="uid://d1mvg8jo77sn" path="res://sprites/spearbutton2.png" id="16_5giyk"]
 [ext_resource type="AudioStream" uid="uid://daqwu2hs4da4" path="res://audio/sounds/click_3.wav" id="16_x7ply"]
 [ext_resource type="Texture2D" uid="uid://d3okiu8e66fw" path="res://sprites/archerbutton1.png" id="17_gjrak"]
@@ -29,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://b3ek1ylf2tcwn" path="res://sprites/beastbutton4.png" id="24_idqbm"]
 [ext_resource type="Script" uid="uid://ckdtk5msiaq7d" path="res://scenes/archer_button.gd" id="24_x7ply"]
 [ext_resource type="Script" uid="uid://cmgu71bo1vfil" path="res://scenes/beast_button.gd" id="29_by072"]
+[ext_resource type="Texture2D" uid="uid://bfkggxyfjfd18" path="res://sprites/drawthis.png" id="30_by072"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_by072"]
 streams_count = 3
@@ -68,7 +72,7 @@ offset_bottom = 392.0
 text = "Draw Here"
 horizontal_alignment = 1
 
-[node name="FinishButton" parent="." unique_id=2147250083 node_paths=PackedStringArray("draw_canvas", "reference_canvas", "similarity_manager") instance=ExtResource("2_o4iku")]
+[node name="FinishButton" parent="." unique_id=2147250083 node_paths=PackedStringArray("draw_canvas", "reference_canvas", "similarity_manager", "flash_text") instance=ExtResource("2_o4iku")]
 layout_mode = 0
 offset_left = 7.0
 offset_top = 11.0
@@ -78,6 +82,7 @@ scale = Vector2(1.2, 1)
 draw_canvas = NodePath("../AspectRatioContainer/TextureRect/DrawImageRect")
 reference_canvas = NodePath("../AspectRatioContainer2/TextureRect/ReferenceCanvas")
 similarity_manager = NodePath("../SimilarityManager")
+flash_text = NodePath("../AspectRatioContainer/TextureRect/DrawImageRect/FlashText")
 
 [node name="SimilarityManager" type="Node" parent="." unique_id=402587851 node_paths=PackedStringArray("draw_canvas", "diff_sprite", "similarity_text")]
 script = ExtResource("5_te3rd")
@@ -118,6 +123,7 @@ texture = ExtResource("4_o4iku")
 metadata/_edit_lock_ = true
 
 [node name="DrawImageRect" type="TextureRect" parent="AspectRatioContainer/TextureRect" unique_id=283286722]
+self_modulate = Color(0, 0, 0, 0.78039217)
 custom_minimum_size = Vector2(320, 320)
 custom_maximum_size = Vector2(320, 320)
 layout_mode = 1
@@ -126,9 +132,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_default_cursor_shape = 2
 script = ExtResource("3_k2tms")
 outline_color = Color(1, 0, 0, 0)
 metadata/_edit_lock_ = true
+
+[node name="FlashText" parent="AspectRatioContainer/TextureRect/DrawImageRect" unique_id=1366506824 instance=ExtResource("6_xday3")]
+layout_mode = 0
+offset_left = 155.0
+offset_top = 154.0
+offset_right = 155.0
+offset_bottom = 154.0
 
 [node name="AspectRatioContainer2" type="AspectRatioContainer" parent="." unique_id=1904624317]
 layout_mode = 0
@@ -143,7 +157,7 @@ texture = ExtResource("4_o4iku")
 metadata/_edit_lock_ = true
 
 [node name="ReferenceCanvas" type="TextureRect" parent="AspectRatioContainer2/TextureRect" unique_id=543195383]
-modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 0.78039217)
 custom_minimum_size = Vector2(320, 320)
 custom_maximum_size = Vector2(320, 320)
 layout_mode = 1
@@ -158,7 +172,7 @@ script = ExtResource("7_k2tms")
 reference_images = Dictionary[int, Array]({
 0: [ExtResource("2_0m2ft"), ExtResource("8_o4iku"), ExtResource("9_xsh7j")],
 1: [ExtResource("8_exj6s"), ExtResource("11_mq30f"), ExtResource("12_8wt2m")],
-2: [ExtResource("9_te3rd"), ExtResource("9_te3rd"), ExtResource("9_te3rd")]
+2: [ExtResource("9_te3rd"), ExtResource("15_h7xdb"), ExtResource("16_3doxt")]
 })
 metadata/_edit_lock_ = true
 
@@ -200,6 +214,7 @@ texture_disabled = ExtResource("24_idqbm")
 script = ExtResource("29_by072")
 
 [node name="OriginalLabel" type="Label" parent="." unique_id=931224465]
+visible = false
 layout_mode = 0
 offset_left = 441.0
 offset_top = 14.0
@@ -207,6 +222,15 @@ offset_right = 710.0
 offset_bottom = 78.0
 text = "Draw This"
 horizontal_alignment = 1
+
+[node name="DrawThis" type="TextureRect" parent="." unique_id=1749960554]
+layout_mode = 0
+offset_left = 570.00006
+offset_top = 389.00003
+offset_right = 896.00006
+offset_bottom = 452.00003
+rotation = -0.026557958
+texture = ExtResource("30_by072")
 
 [connection signal="pressed" from="AspectRatioContainer2/TextureRect/SpearButton" to="AspectRatioContainer2/TextureRect/ReferenceCanvas" method="_on_spear_button_pressed"]
 [connection signal="pressed" from="AspectRatioContainer2/TextureRect/ArcherButton" to="AspectRatioContainer2/TextureRect/ReferenceCanvas" method="_on_archer_button_pressed"]

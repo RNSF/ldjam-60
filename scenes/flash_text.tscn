@@ -48,7 +48,7 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("2_e1qw5")
 
-[node name="FlashText" type="Label" parent="." unique_id=1731862161]
+[node name="Text" type="Label" parent="." unique_id=1731862161]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -65,7 +65,9 @@ scale = Vector2(1e-05, 1e-05)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 text = "Great"
 label_settings = SubResource("LabelSettings_6w0u0")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1274234653]
-root_node = NodePath("../FlashText")
+root_node = NodePath("../Text")
 libraries/ = SubResource("AnimationLibrary_hw28j")
