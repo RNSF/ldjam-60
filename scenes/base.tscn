@@ -1,9 +1,32 @@
 [gd_scene format=3 uid="uid://caaw1w567383o"]
 
 [ext_resource type="Script" uid="uid://cf1my5ajhc4nj" path="res://scenes/base.gd" id="1_pvqg0"]
+[ext_resource type="AudioStream" uid="uid://r7tgy64ot7jl" path="res://audio/sounds/health_down_1.wav" id="2_6irmp"]
+[ext_resource type="AudioStream" uid="uid://erhf1dfi68ni" path="res://audio/sounds/health_down_2.wav" id="3_dmaw2"]
+[ext_resource type="AudioStream" uid="uid://3havfvuesq5f" path="res://audio/sounds/health_down_3.wav" id="4_1xxg6"]
+[ext_resource type="AudioStream" uid="uid://cabix0y2mjwbv" path="res://audio/sounds/health_down_4.wav" id="5_517kj"]
+[ext_resource type="AudioStream" uid="uid://ba2uj0l36vw6p" path="res://audio/sounds/health_down_5.wav" id="6_ot4hf"]
+[ext_resource type="AudioStream" uid="uid://b2gh755rspp7p" path="res://audio/sounds/health_down_6.wav" id="7_vciil"]
+[ext_resource type="AudioStream" uid="uid://dyyeh0efd2hqa" path="res://audio/sounds/health_down_7.wav" id="8_ycryd"]
+[ext_resource type="AudioStream" uid="uid://bll1oo60qx3mn" path="res://audio/sounds/health_down_8.wav" id="9_ystrd"]
+[ext_resource type="AudioStream" uid="uid://taqa8xafqw6h" path="res://audio/sounds/health_down_9.wav" id="10_isyof"]
+[ext_resource type="AudioStream" uid="uid://bha0ar0ywumo6" path="res://audio/sounds/health_down_10.wav" id="11_uo6h6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6w0u0"]
 size = Vector2(115, 1151)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6w0u0"]
+streams_count = 10
+stream_0/stream = ExtResource("2_6irmp")
+stream_1/stream = ExtResource("3_dmaw2")
+stream_2/stream = ExtResource("4_1xxg6")
+stream_3/stream = ExtResource("5_517kj")
+stream_4/stream = ExtResource("6_ot4hf")
+stream_5/stream = ExtResource("7_vciil")
+stream_6/stream = ExtResource("8_ycryd")
+stream_7/stream = ExtResource("9_ystrd")
+stream_8/stream = ExtResource("10_isyof")
+stream_9/stream = ExtResource("11_uo6h6")
 
 [node name="Base" type="Area2D" unique_id=1593357458]
 collision_layer = 4
@@ -13,3 +36,6 @@ script = ExtResource("1_pvqg0")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=616477286]
 position = Vector2(2, 1)
 shape = SubResource("RectangleShape2D_6w0u0")
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="." unique_id=1819713078]
+stream = SubResource("AudioStreamRandomizer_6w0u0")

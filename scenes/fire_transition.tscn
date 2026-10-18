@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cf21ju4yvlhkt"]
+
+[ext_resource type="Shader" uid="uid://32kfdk55cxtr" path="res://scenes/fire.gdshader" id="1_rtisj"]
+[ext_resource type="Texture2D" uid="uid://cl0w2b1rbgid4" path="res://icon.svg" id="2_jo0g0"]
+
+[sub_resource type="Gradient" id="Gradient_0enwo"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_g2kg3"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_f55hw"]
+noise = SubResource("FastNoiseLite_g2kg3")
+color_ramp = SubResource("Gradient_0enwo")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6w0u0"]
+shader = ExtResource("1_rtisj")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_f55hw")
+shader_parameter/brighter_color = Color(1, 0.8, 0, 1)
+shader_parameter/middle_color = Color(1, 0.56, 0, 1)
+shader_parameter/darker_color = Color(0.64, 0.2, 0.05, 1)
+shader_parameter/spread = 0.0
+
+[node name="FireTransition" type="Sprite2D" unique_id=724411047]
+material = SubResource("ShaderMaterial_6w0u0")
+position = Vector2(949, 575)
+scale = Vector2(23.136719, 19.748047)
+texture = ExtResource("2_jo0g0")

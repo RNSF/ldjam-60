@@ -17,6 +17,7 @@ func _ready() -> void:
 
 func damage(amount: int) -> void:
 	health -= amount
+	$HurtSound.play()
 	
 	if health <= 0:
 		Global.go_to_end_screen(false)

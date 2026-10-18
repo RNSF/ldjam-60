@@ -30,7 +30,7 @@ noise = SubResource("FastNoiseLite_p57ef")
 color_ramp = SubResource("Gradient_p57ef")
 seamless = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kvuet"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ir15t"]
 resource_local_to_scene = true
 shader = ExtResource("4_iywne")
 shader_parameter/noise_tex = SubResource("NoiseTexture2D_iywne")
@@ -48,7 +48,7 @@ max_offset = Vector2(25, 25)
 noise_speed = 40.0
 
 [node name="PlayerSpawnArea" parent="." unique_id=1688502913 node_paths=PackedStringArray("spawning_parent") instance=ExtResource("2_lnu2h")]
-position = Vector2(-741, 182)
+position = Vector2(-857, 184)
 size = Vector2(200, 700)
 spawning_parent = NodePath("../Units")
 
@@ -58,20 +58,16 @@ size = Vector2(200, 700)
 spawning_parent = NodePath("../Units")
 
 [node name="Base" parent="." unique_id=1593357458 node_paths=PackedStringArray("health_bar") instance=ExtResource("5_iywne")]
-position = Vector2(-903, 5)
+position = Vector2(-1038, 5)
 health_bar = NodePath("../HealthBar")
 
 [node name="Units" type="Node2D" parent="." unique_id=618549777]
 y_sort_enabled = true
 
 [node name="Fire" parent="." unique_id=2114059335 instance=ExtResource("5_gee14")]
-material = SubResource("ShaderMaterial_kvuet")
+material = SubResource("ShaderMaterial_ir15t")
 position = Vector2(-59.999985, 631)
 script = ExtResource("7_kvpfn")
-
-[node name="HitText" parent="." unique_id=790146150 instance=ExtResource("9_0tnpc")]
-position = Vector2(-2, -5)
-height = 0.0
 
 [node name="HealthBar" parent="." unique_id=1821499788 instance=ExtResource("6_u5sy4")]
 offset_left = -155.0
@@ -85,21 +81,24 @@ offset_top = -656.0
 offset_right = 1068.9999
 offset_bottom = 626.0
 
-[node name="DrawingCanvas" parent="Vignette" unique_id=2004841736 instance=ExtResource("8_0tnpc")]
-layout_mode = 1
+[node name="DrawingCanvas" parent="." unique_id=2004841736 instance=ExtResource("8_0tnpc")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 102.00012
-offset_top = 120.0
-offset_right = 1943.0
-offset_bottom = 1210.0
+offset_left = -962.0
+offset_top = -536.0
+offset_right = 878.9999
+offset_bottom = 554.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="FinishButton" parent="Vignette/DrawingCanvas" index="3" unique_id=2147250083 node_paths=PackedStringArray("player_spawn_area", "enemy_spawn_area")]
-player_spawn_area = NodePath("../../../PlayerSpawnArea")
-enemy_spawn_area = NodePath("../../../EnemySpawnArea")
+[node name="FinishButton" parent="DrawingCanvas" index="3" unique_id=2147250083 node_paths=PackedStringArray("player_spawn_area", "enemy_spawn_area")]
+player_spawn_area = NodePath("../../PlayerSpawnArea")
+enemy_spawn_area = NodePath("../../EnemySpawnArea")
+
+[node name="HitText" parent="." unique_id=790146150 instance=ExtResource("9_0tnpc")]
+position = Vector2(-2, -5)
+height = 0.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1916661224]
 
@@ -110,4 +109,4 @@ music_1 = ExtResource("13_ir15t")
 music_2 = ExtResource("14_ca42v")
 music_3 = ExtResource("15_rysoc")
 
-[editable path="Vignette/DrawingCanvas"]
+[editable path="DrawingCanvas"]
