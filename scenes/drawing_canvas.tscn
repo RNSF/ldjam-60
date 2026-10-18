@@ -48,10 +48,10 @@ horizontal_alignment = 1
 
 [node name="FinishButton" parent="." unique_id=2147250083 node_paths=PackedStringArray("draw_canvas", "reference_canvas", "similarity_manager") instance=ExtResource("2_o4iku")]
 layout_mode = 0
-offset_left = 73.0
-offset_top = 402.0
-offset_right = 307.0
-offset_bottom = 475.0
+offset_left = 0.0
+offset_top = 287.0
+offset_right = 400.0
+offset_bottom = 687.0
 scale = Vector2(1.0203149, 0.8497116)
 draw_canvas = NodePath("../AspectRatioContainer/TextureRect/DrawImageRect")
 reference_canvas = NodePath("../AspectRatioContainer2/TextureRect/ReferenceCanvas")

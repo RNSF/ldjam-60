@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://bhmdn0kuffurn"]
 
 [ext_resource type="Script" uid="uid://ctenjkr5pc72u" path="res://scenes/finish_button.gd" id="1_7ybwd"]
+[ext_resource type="Texture2D" uid="uid://dfp8pbpiwaunx" path="res://sprites/summonbutton1.png" id="1_ltqbd"]
 [ext_resource type="AudioStream" uid="uid://tkghhh3trnha" path="res://audio/sounds/ok_1.wav" id="2_a0pv7"]
+[ext_resource type="Texture2D" uid="uid://5t65pjfliwmp" path="res://sprites/summonbutton3.png" id="2_hfbsd"]
 [ext_resource type="AudioStream" uid="uid://nbkjga1px1pl" path="res://audio/sounds/fail.wav" id="2_qimk2"]
+[ext_resource type="Texture2D" uid="uid://dy5ge8wpqsldu" path="res://sprites/summonbutton2.png" id="3_0mk68"]
 [ext_resource type="AudioStream" uid="uid://cc0yd0gr5j0o2" path="res://audio/sounds/ok_2.wav" id="3_qimk2"]
 [ext_resource type="AudioStream" uid="uid://036cfvxuxm4e" path="res://audio/sounds/ok_3.wav" id="4_txv8k"]
 [ext_resource type="AudioStream" uid="uid://cj30gshoim2e0" path="res://audio/sounds/good_1.wav" id="5_gcu2w"]
@@ -49,6 +52,9 @@ offset_left = -106.0
 offset_top = -35.0
 offset_right = 128.0
 offset_bottom = 38.0
+texture_normal = ExtResource("1_ltqbd")
+texture_pressed = ExtResource("2_hfbsd")
+texture_hover = ExtResource("3_0mk68")
 script = ExtResource("1_7ybwd")
 
 [node name="Fail" type="AudioStreamPlayer" parent="." unique_id=922619147]
