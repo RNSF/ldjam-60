@@ -58,7 +58,7 @@ size = Vector2(200, 700)
 spawning_parent = NodePath("../Units")
 
 [node name="EnemySpawnArea" parent="." unique_id=155568501 node_paths=PackedStringArray("spawning_parent") instance=ExtResource("3_lbhrr")]
-position = Vector2(859, 189)
+position = Vector2(1092, 185)
 size = Vector2(200, 700)
 spawning_parent = NodePath("../Units")
 

@@ -5,8 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://pqx2glcaxjke" path="res://sprites/beast.png" id="2_qy7vd"]
 [ext_resource type="PackedScene" uid="uid://cam86f1y7yf84" path="res://scenes/splash_attack.tscn" id="3_7abxr"]
 [ext_resource type="AudioStream" uid="uid://cqtstjwvnktdi" path="res://audio/sounds/mammoth_death.wav" id="5_q1lfk"]
+[ext_resource type="AudioStream" uid="uid://5w02jtgfhf20" path="res://audio/sounds/mammoth_attack.wav" id="6_nvlsw"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_q1lfk"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_5v7qs"]
 resource_local_to_scene = true
 radius = 404.03094
 
@@ -20,7 +21,7 @@ size = Vector2(40, 20)
 attack_scene = ExtResource("3_7abxr")
 
 [node name="CollisionShape2D" parent="CohesionZone" parent_id_path=PackedInt32Array(631454922) index="0" unique_id=2070335852]
-shape = SubResource("CircleShape2D_q1lfk")
+shape = SubResource("CircleShape2D_5v7qs")
 
 [node name="Sprite" parent="Sprites/SpriteVariation" parent_id_path=PackedInt32Array(1382969379) index="0" unique_id=2097312531]
 position = Vector2(32, -64)
@@ -31,4 +32,4 @@ texture = ExtResource("2_qy7vd")
 stream = SubResource("AudioStreamRandomizer_a28go")
 
 [node name="AttackSound" parent="." index="8" unique_id=2067458577]
-stream = ExtResource("5_q1lfk")
+stream = ExtResource("6_nvlsw")

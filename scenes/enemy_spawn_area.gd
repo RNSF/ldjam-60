@@ -17,22 +17,20 @@ var enemy_bank := [ # unit type, count, delay until next spawn
 		[Unit.Type.Archer, 5, 20],
 		[Unit.Type.Beast, 2, 0],
 		[Unit.Type.Spear, 5, 20],
-		[Unit.Type.Archer, 10, 10],
-		[Unit.Type.Spear, 10, 10],
+		[Unit.Type.Archer, 5, 10],
+		[Unit.Type.Spear, 5, 10],
 		[Unit.Type.Beast, 3, 0],
-		[Unit.Type.Spear, 10, 20],
+		[Unit.Type.Spear, 5, 20],
 	],
 	[ # wave 3
 		[Unit.Type.Spear, 0, 5],
-		[Unit.Type.Spear, 10, 0],
-		[Unit.Type.Spear, 10, 10],
-		[Unit.Type.Archer, 10, 0],
-		[Unit.Type.Spear, 10, 10],
-		[Unit.Type.Beast, 5, 10],
-		[Unit.Type.Spear, 10, 10],
-		[Unit.Type.Archer, 10, 30],
-		[Unit.Type.Beast, 5, 0],
-		[Unit.Type.Beast, 5, 0],
+		[Unit.Type.Spear, 5, 0],
+		[Unit.Type.Spear, 5, 10],
+		[Unit.Type.Archer, 5, 0],
+		[Unit.Type.Spear, 5, 10],
+		[Unit.Type.Beast, 2, 10],
+		[Unit.Type.Spear, 5, 10],
+		[Unit.Type.Archer, 5, 30],
 		[Unit.Type.Beast, 5, 0],
 		[Unit.Type.Beast, 5, 0],
 	]
@@ -91,6 +89,9 @@ func process_wave_step() -> void:
 
 
 func spawn_unit_batch(unit_type: Unit.Type, count: int) -> void:
+	if count <= 0: return;
+	
+	$SummonHorn.play()
 	var unit_scene = unit_scenes[unit_type]
 	
 	

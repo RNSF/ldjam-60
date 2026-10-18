@@ -5,8 +5,9 @@
 [ext_resource type="AudioStream" uid="uid://bbn614lqjp6m8" path="res://audio/sounds/final_wave.wav" id="3_ppcpk"]
 [ext_resource type="AudioStream" uid="uid://crfmdkgl67xk0" path="res://audio/sounds/second_wave.wav" id="4_xbndg"]
 [ext_resource type="AudioStream" uid="uid://cpayvkkr71bbd" path="res://audio/sounds/first_wave.wav" id="5_fq5q0"]
+[ext_resource type="AudioStream" uid="uid://dln4v48tybf0f" path="res://audio/sounds/horn.wav" id="6_xbndg"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ipkwr"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fq5q0"]
 resource_local_to_scene = true
 size = Vector2(50, 50)
 
@@ -14,7 +15,7 @@ size = Vector2(50, 50)
 script = ExtResource("2_ipkwr")
 
 [node name="CollisionShape2D" parent="." index="0" unique_id=2145631213]
-shape = SubResource("RectangleShape2D_ipkwr")
+shape = SubResource("RectangleShape2D_fq5q0")
 
 [node name="Timer" type="Timer" parent="." index="1" unique_id=282970111]
 wait_time = 2.0
@@ -27,5 +28,8 @@ stream = ExtResource("4_xbndg")
 
 [node name="FirstWave" type="AudioStreamPlayer" parent="." index="4" unique_id=1972337551]
 stream = ExtResource("5_fq5q0")
+
+[node name="SummonHorn" type="AudioStreamPlayer" parent="." index="5" unique_id=989241860]
+stream = ExtResource("6_xbndg")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

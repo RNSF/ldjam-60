@@ -13,16 +13,16 @@ var amount_to_add := {
 	},
 	Unit.Type.Archer: {
 		Unit.Quality.Fail: 0,
-		Unit.Quality.Ok: 1,
-		Unit.Quality.Good: 2,
-		Unit.Quality.Great: 3,
-		Unit.Quality.Opus: 5,
+		Unit.Quality.Ok: 2,
+		Unit.Quality.Good: 4,
+		Unit.Quality.Great: 6,
+		Unit.Quality.Opus: 10,
 	},
 	Unit.Type.Beast: {
 		Unit.Quality.Fail: 0,
 		Unit.Quality.Ok: 1,
-		Unit.Quality.Good: 1,
-		Unit.Quality.Great: 2,
+		Unit.Quality.Good: 2,
+		Unit.Quality.Great: 3,
 		Unit.Quality.Opus: 10,
 	}
 }
