@@ -53,7 +53,6 @@ func _physics_process(delta: float) -> void:
 		new_height = 0
 		velocity.y = 0
 		Global.shake_camera(1.0)
-		print("BOOM")
 		is_falling = false
 		timer.start(3.0)
 		

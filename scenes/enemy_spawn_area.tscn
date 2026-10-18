@@ -2,6 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://ckcjugahbyib1" path="res://scenes/spawn_area.tscn" id="1_q7wif"]
 [ext_resource type="Script" uid="uid://bas6hs6lw6jrj" path="res://scenes/enemy_spawn_area.gd" id="2_ipkwr"]
+[ext_resource type="AudioStream" uid="uid://bbn614lqjp6m8" path="res://audio/sounds/final_wave.wav" id="3_ppcpk"]
+[ext_resource type="AudioStream" uid="uid://crfmdkgl67xk0" path="res://audio/sounds/second_wave.wav" id="4_xbndg"]
+[ext_resource type="AudioStream" uid="uid://cpayvkkr71bbd" path="res://audio/sounds/first_wave.wav" id="5_fq5q0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ipkwr"]
 resource_local_to_scene = true
@@ -15,5 +18,14 @@ shape = SubResource("RectangleShape2D_ipkwr")
 
 [node name="Timer" type="Timer" parent="." index="1" unique_id=282970111]
 wait_time = 2.0
+
+[node name="ThirdWave" type="AudioStreamPlayer" parent="." index="2" unique_id=1906582004]
+stream = ExtResource("3_ppcpk")
+
+[node name="SecondWave" type="AudioStreamPlayer" parent="." index="3" unique_id=244681314]
+stream = ExtResource("4_xbndg")
+
+[node name="FirstWave" type="AudioStreamPlayer" parent="." index="4" unique_id=1972337551]
+stream = ExtResource("5_fq5q0")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

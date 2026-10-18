@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ctenjkr5pc72u" path="res://scenes/finish_button.gd" id="1_7ybwd"]
 [ext_resource type="AudioStream" uid="uid://tkghhh3trnha" path="res://audio/sounds/ok_1.wav" id="2_a0pv7"]
+[ext_resource type="AudioStream" uid="uid://nbkjga1px1pl" path="res://audio/sounds/fail.wav" id="2_qimk2"]
 [ext_resource type="AudioStream" uid="uid://cc0yd0gr5j0o2" path="res://audio/sounds/ok_2.wav" id="3_qimk2"]
 [ext_resource type="AudioStream" uid="uid://036cfvxuxm4e" path="res://audio/sounds/ok_3.wav" id="4_txv8k"]
 [ext_resource type="AudioStream" uid="uid://cj30gshoim2e0" path="res://audio/sounds/good_1.wav" id="5_gcu2w"]
@@ -43,6 +44,7 @@ text = "FINISH!"
 script = ExtResource("1_7ybwd")
 
 [node name="Fail" type="AudioStreamPlayer" parent="." unique_id=922619147]
+stream = ExtResource("2_qimk2")
 
 [node name="Ok" type="AudioStreamPlayer" parent="." unique_id=969726967]
 stream = SubResource("AudioStreamRandomizer_6w0u0")

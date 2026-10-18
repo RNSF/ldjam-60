@@ -219,8 +219,6 @@ func _physics_process(delta: float) -> void:
 func _on_attack_timer_timeout() -> void:
 	assert(move_state == MoveState.FIGHT)
 	
-	print("ATTACK")
-	
 	if !target_unit:
 		_find_new_target_unit()
 	

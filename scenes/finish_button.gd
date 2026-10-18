@@ -13,9 +13,9 @@ extends Button
 @onready var great_sound := $Great
 @onready var magnum_opus_sound := $MagnumOpus
 
+var is_started := false
+
 func get_quality(strength: float) -> Unit.Quality:
-	
-	return Unit.Quality.Opus
 	
 	if strength < 0.5:
 		return Unit.Quality.Fail
@@ -23,7 +23,7 @@ func get_quality(strength: float) -> Unit.Quality:
 		return Unit.Quality.Ok
 	if strength < 0.75:
 		return Unit.Quality.Good
-	if strength < 0.9:
+	if strength < 0.9 or not is_started:
 		return Unit.Quality.Great
 	
 	return Unit.Quality.Opus
@@ -61,7 +61,9 @@ func _gui_input(event: InputEvent) -> void:
 				Global.texture_cache.append(texture)
 				player_spawn_area.summon_from_texture(texture, strength, quality, reference_canvas.unit_type)
 				
-				if enemy_spawn_area.is_fresh():
+				if enemy_spawn_area.is_fresh() and not is_started:
+					is_started = true
+					await get_tree().create_timer(2.0).timeout
 					enemy_spawn_area.start_wave()
 			
 			reference_canvas.randomize_image_variation()

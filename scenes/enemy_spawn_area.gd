@@ -43,6 +43,9 @@ var wave_index := 0
 
 @onready var timer: Timer = $Timer # Adjust node path if your Timer has a different name
 
+@onready var first_wave_sound := $FirstWave
+@onready var second_wave_sound := $SecondWave
+@onready var third_wave_sound := $ThirdWave
 
 func is_fresh() -> bool:
 	return wave_number == 0 and wave_index == 0
@@ -52,7 +55,8 @@ func start_wave() -> void:
 	wave_index = 0
 	if wave_number < enemy_bank.size():
 		process_wave_step()
-		Global.show_hit_text("Wave " + str(wave_number + 1))
+		Global.show_hit_text(["Wave 1", "Wave 2", "Final Wave"][wave_number])
+		[first_wave_sound, second_wave_sound, third_wave_sound][wave_number].play()
 	else:
 		print("All waves completed!")
 		timer.stop()
@@ -63,10 +67,11 @@ func process_wave_step() -> void:
 	
 	# Check if the current wave is finished
 	if wave_index >= current_wave.size():
-		wave_number += 1
-		wave_index = 0
-		start_wave()
 		return
+		#wave_number += 1
+		#wave_index = 0
+		#start_wave()
+		#return
 		
 	# Get current entry [UnitType, Count, Delay]
 	var entry = current_wave[wave_index]
@@ -108,6 +113,8 @@ func spawn_unit_batch(unit_type: Unit.Type, count: int) -> void:
 func _check_for_next_wave():
 	if !get_tree(): return
 	if wave_index >= enemy_bank[wave_number].size() and get_tree().get_nodes_in_group(&"enemy").size() == 0:
+		wave_number += 1
+		wave_index = 0
 		start_wave()
 
 func _on_timer_timeout() -> void:

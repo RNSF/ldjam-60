@@ -1,12 +1,37 @@
 [gd_scene format=3 uid="uid://de4ut1esre7mf"]
 
 [ext_resource type="PackedScene" uid="uid://g3aoxkfm0i5c" path="res://scenes/camera.tscn" id="2_85q8e"]
+[ext_resource type="Shader" uid="uid://32kfdk55cxtr" path="res://scenes/fire.gdshader" id="2_hyprt"]
 [ext_resource type="PackedScene" uid="uid://obijcnqp1qqm" path="res://scenes/end_drawing.tscn" id="2_ojf8p"]
 [ext_resource type="PackedScene" uid="uid://bgyby7cg71nic" path="res://scenes/vignette.tscn" id="4_4835h"]
 [ext_resource type="PackedScene" uid="uid://badrqiqu75441" path="res://scenes/fire.tscn" id="4_ojf8p"]
 [ext_resource type="FontFile" uid="uid://2ndkktutoqrg" path="res://fonts/cro-magnum-font/CroMagnum-eZzJO.ttf" id="5_4835h"]
 [ext_resource type="Script" uid="uid://dnlbwjo7dn0ui" path="res://scenes/end_text.gd" id="6_gxua3"]
 [ext_resource type="PackedScene" uid="uid://dho3ud1hng7md" path="res://scenes/restart_button.tscn" id="7_gxua3"]
+
+[sub_resource type="Gradient" id="Gradient_iywne"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_u5sy4"]
+gradient = SubResource("Gradient_iywne")
+
+[sub_resource type="Gradient" id="Gradient_p57ef"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_p57ef"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_iywne"]
+noise = SubResource("FastNoiseLite_p57ef")
+color_ramp = SubResource("Gradient_p57ef")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_notft"]
+resource_local_to_scene = true
+shader = ExtResource("2_hyprt")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_iywne")
+shader_parameter/gradient_tex = SubResource("GradientTexture1D_u5sy4")
+shader_parameter/brighter_color = Color(1, 0.8, 0, 1)
+shader_parameter/middle_color = Color(1, 0.56, 0, 1)
+shader_parameter/darker_color = Color(0.64, 0.2, 0.05, 1)
+shader_parameter/spread = 0.53200002527
 
 [sub_resource type="LabelSettings" id="LabelSettings_6w0u0"]
 font = ExtResource("5_4835h")
@@ -16,6 +41,7 @@ font_color = Color(0, 0, 0, 1)
 [node name="EndScene" type="Node2D" unique_id=180096615]
 
 [node name="Fire" parent="." unique_id=2114059335 instance=ExtResource("4_ojf8p")]
+material = SubResource("ShaderMaterial_notft")
 position = Vector2(-26, 456.99997)
 scale = Vector2(6.157, 6)
 
@@ -46,10 +72,10 @@ position = Vector2(-685, -60)
 [node name="EndDrawing9" parent="." unique_id=758095573 instance=ExtResource("2_ojf8p")]
 position = Vector2(454, -346)
 
-[node name="EndDrawing10" parent="." unique_id=891965089 instance=ExtResource("2_ojf8p")]
-position = Vector2(65, -280)
-
 [node name="Camera2D" parent="." unique_id=1913107566 instance=ExtResource("2_85q8e")]
+decay_rate = 6.0
+max_offset = Vector2(25, 25)
+noise_speed = 40.0
 
 [node name="Vignette" parent="." unique_id=299465870 instance=ExtResource("4_4835h")]
 offset_left = -974.0
@@ -70,3 +96,6 @@ vertical_alignment = 1
 script = ExtResource("6_gxua3")
 
 [node name="RestartButton" parent="." unique_id=1677186494 instance=ExtResource("7_gxua3")]
+
+[node name="EndDrawing10" parent="." unique_id=891965089 instance=ExtResource("2_ojf8p")]
+position = Vector2(65, -280)
