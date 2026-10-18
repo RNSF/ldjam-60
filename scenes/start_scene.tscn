@@ -4,6 +4,7 @@
 [ext_resource type="Shader" uid="uid://32kfdk55cxtr" path="res://scenes/fire.gdshader" id="2_0kdh5"]
 [ext_resource type="PackedScene" uid="uid://g3aoxkfm0i5c" path="res://scenes/camera.tscn" id="3_6vkx6"]
 [ext_resource type="PackedScene" uid="uid://bgyby7cg71nic" path="res://scenes/vignette.tscn" id="4_u6lbi"]
+[ext_resource type="AudioStream" uid="uid://hg8jlbtoj23q" path="res://audio/music/menu_loop.mp3" id="6_sg87u"]
 [ext_resource type="PackedScene" uid="uid://dho3ud1hng7md" path="res://scenes/restart_button.tscn" id="7_2ddlt"]
 
 [sub_resource type="Gradient" id="Gradient_iywne"]
@@ -20,7 +21,7 @@ noise = SubResource("FastNoiseLite_p57ef")
 color_ramp = SubResource("Gradient_p57ef")
 seamless = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sg87u"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2l3yw"]
 resource_local_to_scene = true
 shader = ExtResource("2_0kdh5")
 shader_parameter/noise_tex = SubResource("NoiseTexture2D_iywne")
@@ -30,10 +31,10 @@ shader_parameter/middle_color = Color(1, 0.56, 0, 1)
 shader_parameter/darker_color = Color(0.64, 0.2, 0.05, 1)
 shader_parameter/spread = 0.53200002527
 
-[node name="EndScene" type="Node2D" unique_id=180096615]
+[node name="StartScene" type="Node2D" unique_id=180096615]
 
 [node name="Fire" parent="." unique_id=2114059335 instance=ExtResource("1_2l3yw")]
-material = SubResource("ShaderMaterial_sg87u")
+material = SubResource("ShaderMaterial_2l3yw")
 position = Vector2(-26, 456.99997)
 scale = Vector2(6.157, 6)
 
@@ -47,3 +48,7 @@ offset_bottom = 565.0
 metadata/_edit_lock_ = true
 
 [node name="RestartButton" parent="." unique_id=1677186494 instance=ExtResource("7_2ddlt")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1729058886]
+stream = ExtResource("6_sg87u")
+autoplay = true

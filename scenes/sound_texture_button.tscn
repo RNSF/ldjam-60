@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://rajuogfn818l"]
+
+[ext_resource type="Script" uid="uid://y25ycsoorauy" path="res://scenes/sound_texture_button.gd" id="1_4w0e6"]
+[ext_resource type="AudioStream" uid="uid://c4jiduppsavut" path="res://audio/sounds/click_1.wav" id="2_nkqgq"]
+[ext_resource type="AudioStream" uid="uid://cn53kpq0ikwbm" path="res://audio/sounds/click_2.wav" id="3_c2xbw"]
+[ext_resource type="AudioStream" uid="uid://daqwu2hs4da4" path="res://audio/sounds/click_3.wav" id="4_kibts"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6w0u0"]
+streams_count = 3
+stream_0/stream = ExtResource("2_nkqgq")
+stream_1/stream = ExtResource("3_c2xbw")
+stream_2/stream = ExtResource("4_kibts")
+
+[node name="SoundTextureButton" type="TextureButton" unique_id=1977255531]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_4w0e6")
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="." unique_id=1258248395]
+stream = SubResource("AudioStreamRandomizer_6w0u0")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

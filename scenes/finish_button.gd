@@ -1,4 +1,4 @@
-extends Button
+extends TextureButton
 
 @export var draw_canvas: DrawTexture
 @export var reference_canvas: ReferenceCanvas
@@ -29,43 +29,47 @@ func get_quality(strength: float) -> Unit.Quality:
 	return Unit.Quality.Opus
 	
 
-func _gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		if event.pressed:
-			var similarity_score := similarity_manager.compare(draw_canvas.image, reference_canvas.texture.get_image())
-			var texture : Texture2D = ImageTexture.create_from_image(draw_canvas.image.duplicate())
-			
-			
-			draw_canvas.clear()
-			var strength : float = min(similarity_score.similarity, similarity_score.completeness, similarity_score.accuracy)
-			
-			var quality := get_quality(strength)
-			
-			match quality:
-				Unit.Quality.Fail:
-					fail_sound.play()
-				Unit.Quality.Ok:
-					ok_sound.play()
-				Unit.Quality.Good:
-					good_sound.play()
-				Unit.Quality.Great:
-					great_sound.play()
-				Unit.Quality.Opus:
-					magnum_opus_sound.play()
-					Global.show_hit_text("Magnum Opus")
-			
-			if quality != Unit.Quality.Fail:
-				
-				print(strength)
-				print(quality)
-				Global.texture_cache.append(texture)
-				player_spawn_area.summon_from_texture(texture, strength, quality, reference_canvas.unit_type)
-				
-				if enemy_spawn_area.is_fresh() and not is_started:
-					is_started = true
-					await get_tree().create_timer(2.0).timeout
-					enemy_spawn_area.start_wave()
-			
-			reference_canvas.randomize_image_variation()
-			
+
+
+func _on_pressed() -> void:
+	
+	$ClickSound.play()
+	
+	
+	var similarity_score := similarity_manager.compare(draw_canvas.image, reference_canvas.texture.get_image())
+	var texture : Texture2D = ImageTexture.create_from_image(draw_canvas.image.duplicate())
+	
+	
+	draw_canvas.clear()
+	var strength : float = min(similarity_score.similarity, similarity_score.completeness, similarity_score.accuracy)
+	
+	var quality := get_quality(strength)
+	
+	match quality:
+		Unit.Quality.Fail:
+			fail_sound.play()
+		Unit.Quality.Ok:
+			ok_sound.play()
+		Unit.Quality.Good:
+			good_sound.play()
+		Unit.Quality.Great:
+			great_sound.play()
+		Unit.Quality.Opus:
+			magnum_opus_sound.play()
+			Global.show_hit_text("Magnum Opus")
+	
+	if quality != Unit.Quality.Fail:
 		
+		print(strength)
+		print(quality)
+		Global.texture_cache.append(texture)
+		player_spawn_area.summon_from_texture(texture, strength, quality, reference_canvas.unit_type)
+		
+		if enemy_spawn_area.is_fresh() and not is_started:
+			is_started = true
+			await get_tree().create_timer(2.0).timeout
+			enemy_spawn_area.start_wave()
+	
+	reference_canvas.randomize_image_variation()
+	
+	pass # Replace with function body.

@@ -14,6 +14,9 @@
 [ext_resource type="AudioStream" uid="uid://bn766ayhiq2pb" path="res://audio/sounds/great_3.wav" id="11_0mk68"]
 [ext_resource type="AudioStream" uid="uid://bvc3pltd6skr7" path="res://audio/sounds/great_4.wav" id="12_pgt21"]
 [ext_resource type="AudioStream" uid="uid://i3167pjferi8" path="res://audio/sounds/ui_drawing_magnum.wav" id="13_kjjl1"]
+[ext_resource type="AudioStream" uid="uid://c4jiduppsavut" path="res://audio/sounds/click_1.wav" id="15_rsvm5"]
+[ext_resource type="AudioStream" uid="uid://cn53kpq0ikwbm" path="res://audio/sounds/click_2.wav" id="16_mscj0"]
+[ext_resource type="AudioStream" uid="uid://daqwu2hs4da4" path="res://audio/sounds/click_3.wav" id="17_m5kjo"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6w0u0"]
 streams_count = 3
@@ -35,12 +38,17 @@ stream_1/stream = ExtResource("10_hfbsd")
 stream_2/stream = ExtResource("11_0mk68")
 stream_3/stream = ExtResource("12_pgt21")
 
-[node name="FinishButton" type="Button" unique_id=2147250083]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ltqbd"]
+streams_count = 3
+stream_0/stream = ExtResource("15_rsvm5")
+stream_1/stream = ExtResource("16_mscj0")
+stream_2/stream = ExtResource("17_m5kjo")
+
+[node name="FinishButton" type="TextureButton" unique_id=620305027]
 offset_left = -106.0
 offset_top = -35.0
 offset_right = 128.0
 offset_bottom = 38.0
-text = "FINISH!"
 script = ExtResource("1_7ybwd")
 
 [node name="Fail" type="AudioStreamPlayer" parent="." unique_id=922619147]
@@ -57,3 +65,8 @@ stream = SubResource("AudioStreamRandomizer_wqe1g")
 
 [node name="MagnumOpus" type="AudioStreamPlayer" parent="." unique_id=351864588]
 stream = ExtResource("13_kjjl1")
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="." unique_id=731188651]
+stream = SubResource("AudioStreamRandomizer_ltqbd")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

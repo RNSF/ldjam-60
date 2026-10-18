@@ -2,6 +2,15 @@
 
 [ext_resource type="Texture2D" uid="uid://cl0w2b1rbgid4" path="res://icon.svg" id="1_ski18"]
 [ext_resource type="Script" uid="uid://bv03240xndqvq" path="res://scenes/restart_button.gd" id="2_q71u0"]
+[ext_resource type="AudioStream" uid="uid://c4jiduppsavut" path="res://audio/sounds/click_1.wav" id="3_sodyn"]
+[ext_resource type="AudioStream" uid="uid://cn53kpq0ikwbm" path="res://audio/sounds/click_2.wav" id="4_3j4qt"]
+[ext_resource type="AudioStream" uid="uid://daqwu2hs4da4" path="res://audio/sounds/click_3.wav" id="5_pnjko"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ku817"]
+streams_count = 3
+stream_0/stream = ExtResource("3_sodyn")
+stream_1/stream = ExtResource("4_3j4qt")
+stream_2/stream = ExtResource("5_pnjko")
 
 [node name="RestartButton" type="TextureButton" unique_id=1677186494]
 offset_left = -212.0
@@ -12,5 +21,8 @@ texture_normal = ExtResource("1_ski18")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("2_q71u0")
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="." unique_id=793082054]
+stream = SubResource("AudioStreamRandomizer_ku817")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
