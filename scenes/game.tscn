@@ -2,8 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://g3aoxkfm0i5c" path="res://scenes/camera.tscn" id="1_0tnpc"]
 [ext_resource type="Texture2D" uid="uid://b80i2e2kib0c1" path="res://sprites/background.png" id="1_ca42v"]
+[ext_resource type="Texture2D" uid="uid://b8dbcevdm7v1g" path="res://sprites/DrawingAreaShadow.png" id="2_264po"]
 [ext_resource type="PackedScene" uid="uid://cjvmbogs1upmi" path="res://scenes/player_spawn_area.tscn" id="2_lnu2h"]
+[ext_resource type="Texture2D" uid="uid://br0st5l6ne2sc" path="res://sprites/ChooseButtonShadow.png" id="3_1kice"]
 [ext_resource type="PackedScene" uid="uid://ctejnl3p7gnfa" path="res://scenes/enemy_spawn_area.tscn" id="3_lbhrr"]
+[ext_resource type="Texture2D" uid="uid://7j8kmfui8k8w" path="res://sprites/SummonShadow.png" id="4_5newe"]
 [ext_resource type="Shader" uid="uid://32kfdk55cxtr" path="res://scenes/fire.gdshader" id="4_iywne"]
 [ext_resource type="PackedScene" uid="uid://badrqiqu75441" path="res://scenes/fire.tscn" id="5_gee14"]
 [ext_resource type="PackedScene" uid="uid://caaw1w567383o" path="res://scenes/base.tscn" id="5_iywne"]
@@ -12,6 +15,8 @@
 [ext_resource type="Script" uid="uid://cls6hwrorcjb1" path="res://scenes/reaction_fire.gd" id="7_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://cg3avpxbx6uhy" path="res://scenes/drawing_canvas.tscn" id="8_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://db2vsc3edixks" path="res://scenes/hit_text.tscn" id="9_0tnpc"]
+[ext_resource type="Texture2D" uid="uid://byachetsifnfp" path="res://sprites/heartfull1.png" id="10_rysoc"]
+[ext_resource type="Texture2D" uid="uid://djqjki82c0upw" path="res://sprites/heartfull2.png" id="11_ssvqc"]
 [ext_resource type="Script" uid="uid://u1hfp26hmcm8" path="res://scenes/game_music.gd" id="12_dinhu"]
 [ext_resource type="AudioStream" uid="uid://bpulnjg7uduqd" path="res://audio/music/stage_1.mp3" id="13_ir15t"]
 [ext_resource type="AudioStream" uid="uid://cylj0m1oqm3ea" path="res://audio/music/stage_2.mp3" id="14_ca42v"]
@@ -31,7 +36,7 @@ noise = SubResource("FastNoiseLite_p57ef")
 color_ramp = SubResource("Gradient_p57ef")
 seamless = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ca42v"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ssvqc"]
 resource_local_to_scene = true
 shader = ExtResource("4_iywne")
 shader_parameter/noise_tex = SubResource("NoiseTexture2D_iywne")
@@ -46,6 +51,54 @@ shader_parameter/spread = 0.542000025745
 [node name="Background" type="Sprite2D" parent="." unique_id=1113953588]
 position = Vector2(-3, 8)
 texture = ExtResource("1_ca42v")
+
+[node name="DrawBoxShadow" type="TextureRect" parent="." unique_id=101288046]
+modulate = Color(1, 1, 1, 0.39215687)
+offset_left = -805.0
+offset_top = -521.0
+offset_right = -405.0
+offset_bottom = -121.0
+texture = ExtResource("2_264po")
+
+[node name="DrawBoxShadow2" type="TextureRect" parent="." unique_id=457998061]
+modulate = Color(1, 1, 1, 0.39215687)
+offset_left = -417.0
+offset_top = -521.0
+offset_right = -17.0
+offset_bottom = -121.0
+texture = ExtResource("2_264po")
+
+[node name="SpearButtonShadow" type="TextureRect" parent="." unique_id=1065515890]
+self_modulate = Color(0.82, 0.82, 0.82, 0.39607844)
+offset_left = -18.0
+offset_top = -507.0
+offset_right = 101.0
+offset_bottom = -393.0
+texture = ExtResource("3_1kice")
+
+[node name="BowButtonShadow" type="TextureRect" parent="." unique_id=249259840]
+self_modulate = Color(0.82, 0.82, 0.82, 0.39215687)
+offset_left = -17.0
+offset_top = -388.0
+offset_right = 102.0
+offset_bottom = -274.0
+texture = ExtResource("3_1kice")
+
+[node name="BeastButtonShadow" type="TextureRect" parent="." unique_id=536435589]
+self_modulate = Color(0.82, 0.82, 0.82, 0.39215687)
+offset_left = -16.0
+offset_top = -265.0
+offset_right = 103.0
+offset_bottom = -151.0
+texture = ExtResource("3_1kice")
+
+[node name="SummonShadow" type="TextureRect" parent="." unique_id=1706754132]
+self_modulate = Color(0.94, 0.80307335, 0.7238, 0.4862745)
+offset_left = -923.0
+offset_top = -515.0
+offset_right = -807.0
+offset_bottom = -137.0
+texture = ExtResource("4_5newe")
 
 [node name="Camera2D" parent="." unique_id=1913107566 instance=ExtResource("1_0tnpc")]
 decay_rate = 6.0
@@ -70,7 +123,7 @@ health_bar = NodePath("../HealthBar")
 y_sort_enabled = true
 
 [node name="Fire" parent="." unique_id=2114059335 instance=ExtResource("5_gee14")]
-material = SubResource("ShaderMaterial_ca42v")
+material = SubResource("ShaderMaterial_ssvqc")
 position = Vector2(-59.999985, 631)
 script = ExtResource("7_kvpfn")
 
@@ -81,52 +134,54 @@ offset_right = -694.0
 offset_bottom = 549.0
 
 [node name="Heart" parent="HealthBar" index="0" unique_id=1215954451]
-offset_left = 84.0
-offset_top = 567.0
-offset_right = 184.0
-offset_bottom = 667.0
+offset_left = 94.0
+offset_top = 557.0
+offset_right = 194.0
+offset_bottom = 657.0
+texture = ExtResource("10_rysoc")
 
 [node name="Heart2" parent="HealthBar" index="1" unique_id=1287488170]
-offset_left = 79.0
-offset_top = 64.0
-offset_right = 179.0
-offset_bottom = 164.0
+offset_left = 110.0
+offset_top = 41.0
+offset_right = 210.0
+offset_bottom = 141.0
+texture = ExtResource("11_ssvqc")
 
 [node name="Heart3" parent="HealthBar" index="2" unique_id=306501250]
-offset_left = -7.0
-offset_top = 111.0
-offset_right = 93.0
-offset_bottom = 211.0
+offset_left = 13.0
+offset_top = 128.0
+offset_right = 113.0
+offset_bottom = 228.0
 
 [node name="Heart4" parent="HealthBar" index="3" unique_id=105123800]
-offset_left = 75.0
-offset_top = 188.0
-offset_right = 175.0
-offset_bottom = 288.0
+offset_left = 108.0
+offset_top = 177.0
+offset_right = 208.0
+offset_bottom = 277.0
 
 [node name="Heart5" parent="HealthBar" index="4" unique_id=1936825642]
 offset_left = 6.0
-offset_top = 295.0
+offset_top = 280.0
 offset_right = 106.0
-offset_bottom = 395.0
+offset_bottom = 380.0
 
 [node name="Heart6" parent="HealthBar" index="5" unique_id=1200371188]
-offset_left = 86.0
-offset_top = 355.0
-offset_right = 186.0
-offset_bottom = 455.0
+offset_left = 93.0
+offset_top = 302.0
+offset_right = 193.0
+offset_bottom = 402.0
 
 [node name="Heart7" parent="HealthBar" index="6" unique_id=1804783796]
-offset_left = -12.0
-offset_top = 409.0
-offset_right = 88.0
-offset_bottom = 509.0
+offset_left = 1.0
+offset_top = 408.0
+offset_right = 101.0
+offset_bottom = 508.0
 
 [node name="Heart8" parent="HealthBar" index="7" unique_id=1576284278]
-offset_left = 116.0
-offset_top = 466.0
-offset_right = 216.0
-offset_bottom = 566.0
+offset_left = 96.0
+offset_top = 436.0
+offset_right = 196.0
+offset_bottom = 536.0
 
 [node name="Heart9" parent="HealthBar" index="8" unique_id=1638196029]
 offset_left = 2.0
@@ -135,8 +190,10 @@ offset_right = 102.0
 offset_bottom = 643.0
 
 [node name="Heart10" parent="HealthBar" index="9" unique_id=931586193]
-offset_right = 100.0
-offset_bottom = 100.0
+offset_left = 16.0
+offset_top = 1.0
+offset_right = 116.0
+offset_bottom = 101.0
 
 [node name="DrawingCanvas" parent="." unique_id=2004841736 instance=ExtResource("8_0tnpc")]
 anchors_preset = 15
@@ -153,6 +210,13 @@ grow_vertical = 2
 player_spawn_area = NodePath("../../PlayerSpawnArea")
 enemy_spawn_area = NodePath("../../EnemySpawnArea")
 
+[node name="DrawThis" parent="DrawingCanvas" index="10" unique_id=1749960554]
+self_modulate = Color(1, 1, 1, 0.81960785)
+offset_left = 577.00006
+offset_top = 403.00003
+offset_right = 903.00006
+offset_bottom = 466.00003
+
 [node name="Vignette" parent="." unique_id=299465870 instance=ExtResource("6_p57ef")]
 offset_left = -1101.0
 offset_top = -601.0
@@ -160,6 +224,7 @@ offset_right = 1032.0
 offset_bottom = 681.0
 
 [node name="HitText" parent="." unique_id=790146150 instance=ExtResource("9_0tnpc")]
+modulate = Color(0.42, 0.15224998, 0.105, 1)
 position = Vector2(-2, -5)
 height = 0.0
 

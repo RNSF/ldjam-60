@@ -30,7 +30,7 @@ noise = SubResource("FastNoiseLite_p57ef")
 color_ramp = SubResource("Gradient_p57ef")
 seamless = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wfflf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k4w31"]
 resource_local_to_scene = true
 shader = ExtResource("2_hyprt")
 shader_parameter/noise_tex = SubResource("NoiseTexture2D_iywne")
@@ -52,15 +52,15 @@ position = Vector2(-3, 8)
 texture = ExtResource("1_i4wik")
 
 [node name="Fire" parent="." unique_id=2114059335 instance=ExtResource("4_ojf8p")]
-material = SubResource("ShaderMaterial_wfflf")
+material = SubResource("ShaderMaterial_k4w31")
 position = Vector2(-26, 456.99997)
 scale = Vector2(6.157, 6)
 
 [node name="EndDrawing" parent="." unique_id=2077073480 instance=ExtResource("2_ojf8p")]
-position = Vector2(-778, -380)
+position = Vector2(-744, -347)
 
 [node name="EndDrawing2" parent="." unique_id=2034789584 instance=ExtResource("2_ojf8p")]
-position = Vector2(-436, -308)
+position = Vector2(-368, -346)
 
 [node name="EndDrawing3" parent="." unique_id=1922152749 instance=ExtResource("2_ojf8p")]
 position = Vector2(-417, -25)
@@ -106,7 +106,18 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("6_gxua3")
 
+[node name="RetryButtonShadow" type="TextureRect" parent="." unique_id=1252861487]
+self_modulate = Color(1, 1, 1, 0.6)
+offset_left = -165.0
+offset_top = 65.0
+offset_right = 228.0
+offset_bottom = 233.0
+texture = ExtResource("11_lgqhb")
+
 [node name="RestartButton" parent="." unique_id=1677186494 instance=ExtResource("7_gxua3")]
+offset_left = -188.0
+offset_top = 49.0
+offset_bottom = 222.0
 texture_normal = ExtResource("10_k4w31")
 texture_pressed = ExtResource("11_lgqhb")
 texture_hover = ExtResource("12_cl4u6")

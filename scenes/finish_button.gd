@@ -50,16 +50,16 @@ func _on_pressed() -> void:
 	match quality:
 		Unit.Quality.Fail:
 			fail_sound.play()
-			flash_text.show_text("Too Uglee", Color.RED) #TODO(ARI)
+			flash_text.show_text("Too Uglee", Color("#36120e")) #TODO(ARI)
 		Unit.Quality.Ok:
 			ok_sound.play()
-			flash_text.show_text("OK", Color.YELLOW) #TODO(ARI)
+			flash_text.show_text("OK", Color("#5e2721"))#TODO(ARI)
 		Unit.Quality.Good:
 			good_sound.play()
-			flash_text.show_text("Gud", Color.YELLOW_GREEN) #TODO(ARI)
+			flash_text.show_text("Gud", Color("#85431b")) #TODO(ARI)
 		Unit.Quality.Great:
 			great_sound.play()
-			flash_text.show_text("Grate", Color.GREEN) #TODO(ARI)
+			flash_text.show_text("Grate", Color("#f2be44")) #TODO(ARI)
 		Unit.Quality.Opus:
 			magnum_opus_sound.play()
 			#flash_text.show_text("Magnum Opus", Color.AQUA) #TODO(ARI)
