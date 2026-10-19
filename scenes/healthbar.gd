@@ -11,10 +11,11 @@ var max_health : int = 10 :
 			#remove_child(child)
 			#child.queue_free()
 		#
-		#for i in range(max_health):
+		for i in range(max_health):
 			#var heart : Heart = heart_scene.instantiate()
 			#add_child(heart)
-			#heart.variation = randi_range(0, 2)
+			
+			get_child(i).variation = randi_range(0, 3)
 		health = min(max_health, health)
 		
 var health : int = 10 :

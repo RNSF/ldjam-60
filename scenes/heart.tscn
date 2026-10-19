@@ -6,11 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://djqjki82c0upw" path="res://sprites/heartfull2.png" id="4_0fb81"]
 [ext_resource type="Texture2D" uid="uid://dq0od6o4cgcth" path="res://sprites/heartfull3.png" id="5_uj202"]
 [ext_resource type="Texture2D" uid="uid://udl4clv7ea82" path="res://sprites/heartempty1.png" id="6_0uc88"]
+[ext_resource type="Texture2D" uid="uid://daque47vtpre8" path="res://sprites/heartfull4.png" id="6_uj202"]
 [ext_resource type="Texture2D" uid="uid://b3cjxed6bcntc" path="res://sprites/heartempty2.png" id="7_rpd80"]
 [ext_resource type="Texture2D" uid="uid://d28wu4vqb4nqo" path="res://sprites/heartempty3.png" id="8_1cu63"]
+[ext_resource type="Texture2D" uid="uid://dfeiwfp5hrfyy" path="res://sprites/heartempty4.png" id="10_0uc88"]
 
 [node name="Heart" type="TextureRect" unique_id=1215954451]
-modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(100, 100)
 custom_maximum_size = Vector2(100, 100)
 offset_right = 40.0
@@ -19,5 +20,5 @@ size_flags_horizontal = 3
 texture = ExtResource("2_krgnv")
 expand_mode = 5
 script = ExtResource("1_v30as")
-full_textures = Array[Texture]([ExtResource("3_oquu7"), ExtResource("4_0fb81"), ExtResource("5_uj202")])
-empty_textures = Array[Texture]([ExtResource("6_0uc88"), ExtResource("7_rpd80"), ExtResource("8_1cu63")])
+full_textures = Array[Texture]([ExtResource("3_oquu7"), ExtResource("4_0fb81"), ExtResource("5_uj202"), ExtResource("6_uj202")])
+empty_textures = Array[Texture]([ExtResource("6_0uc88"), ExtResource("7_rpd80"), ExtResource("8_1cu63"), ExtResource("10_0uc88")])

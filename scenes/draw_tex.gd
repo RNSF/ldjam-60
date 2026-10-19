@@ -11,13 +11,18 @@ var _last_pos := Vector2i(-1, -1)
 @export var outline_color := Color.RED
 @export var outline_width := 2.0
 
+@export var brush_painting_cursor : Texture
+@export var brush_cursor : Texture
+
 func _ready() -> void:
 	image = Image.create(canvas_size, canvas_size, false, Image.FORMAT_RGBA8)
 	image.fill(Color(0, 0, 0, 0))
 	texture = ImageTexture.create_from_image(image)
+	Input.set_custom_mouse_cursor(brush_cursor, Input.CURSOR_POINTING_HAND)
 
 func _draw() -> void: 
 	draw_rect(Rect2(Vector2.ZERO, size), outline_color, false, outline_width)
+
 
 # Maps the local mouse position to the image's actual pixel dimensions
 func _get_image_pos(local_pos: Vector2) -> Vector2i:
@@ -37,8 +42,10 @@ func _gui_input(event: InputEvent) -> void:
 			_last_pos = _get_image_pos(event.position)
 			_stamp(_last_pos)
 			texture.update(image)
+			Input.set_custom_mouse_cursor(brush_painting_cursor, Input.CURSOR_POINTING_HAND)
 		else:
 			_last_pos = Vector2i(-1, -1)
+			Input.set_custom_mouse_cursor(brush_cursor, Input.CURSOR_POINTING_HAND)
 	elif event is InputEventMouseMotion and (event.button_mask & MOUSE_BUTTON_MASK_LEFT):
 		var pos := _get_image_pos(event.position)
 		_stroke(_last_pos, pos)

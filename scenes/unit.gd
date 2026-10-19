@@ -103,10 +103,10 @@ var velocity : Vector2
 
 func _ready() -> void:
 	assert(attack_radius_low <= attack_radius_high)
-	color = color.lightened(randf_range(0.0, 0.2))
-	sprite_variation.scale.x = exp(randf_range(-0.2, 0.2))
-	sprite_variation.scale.y = exp(randf_range(-0.2, 0.2))
-	sprite_variation.rotation = randf_range(-0.2, 0.2)
+	color = color.lightened(randf_range(0.0, 0.15))
+	sprite_variation.scale.x = exp(randf_range(-0.15, 0.15))
+	sprite_variation.scale.y = exp(randf_range(-0.15, 0.15))
+	sprite_variation.rotation = randf_range(-0.15, 0.15)
 	
 	if ally_unit_tag == &"enemy":
 		sprite.texture = possible_textures.pick_random()

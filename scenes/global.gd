@@ -9,6 +9,9 @@ var did_win := false
 var hit_text : HitText
 var master_scene : MasterScene
 
+var brush = load("res://sprites/brush1.png")
+var brush_painting = load("res://sprites/brush2.png")
+
 func _ready() -> void:
 	randomize()
 

@@ -9,3 +9,7 @@ extends TextureRect
 	set(new_value):
 		is_full = new_value
 		texture = full_textures[variation] if is_full else empty_textures[variation]
+
+
+func _ready() -> void:
+	flip_h = randi_range(0, 2) == 0

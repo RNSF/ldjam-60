@@ -6,7 +6,9 @@
 [ext_resource type="Script" uid="uid://ccpmgbipk2j5f" path="res://scenes/draw_tex.gd" id="3_k2tms"]
 [ext_resource type="Texture2D" uid="uid://ilxjlsi7hjsb" path="res://sprites/drawing_tablet.png" id="4_o4iku"]
 [ext_resource type="Script" uid="uid://b5eqk2q80bqab" path="res://scenes/similarity_manager.gd" id="5_te3rd"]
+[ext_resource type="Texture2D" uid="uid://dkv16yeniri81" path="res://sprites/brush2.png" id="6_d701y"]
 [ext_resource type="PackedScene" uid="uid://22in8b3u3t7a" path="res://scenes/flash_text.tscn" id="6_xday3"]
+[ext_resource type="Texture2D" uid="uid://bg5threl5d0uy" path="res://sprites/brush1.png" id="7_6ydwl"]
 [ext_resource type="Script" uid="uid://cleg34nd4xgx3" path="res://scenes/reference_canvas.gd" id="7_k2tms"]
 [ext_resource type="Texture2D" uid="uid://daqc7wh270bsy" path="res://sprites/archer.png" id="8_exj6s"]
 [ext_resource type="Texture2D" uid="uid://05ca8b15f537" path="res://sprites/spear2.png" id="8_o4iku"]
@@ -134,7 +136,11 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
 script = ExtResource("3_k2tms")
+canvas_size = null
 outline_color = Color(1, 0, 0, 0)
+outline_width = null
+brush_painting_cursor = ExtResource("6_d701y")
+brush_cursor = ExtResource("7_6ydwl")
 metadata/_edit_lock_ = true
 
 [node name="FlashText" parent="AspectRatioContainer/TextureRect/DrawImageRect" unique_id=1366506824 instance=ExtResource("6_xday3")]
